@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<Configuration>
+  <General>
+    <!-- General: General application settings-->
+    <AppName>UC Geek Task Launcher</AppName>
+    <CompanyName>UC Geek</CompanyName>
+  </General>
+  <Support>
+    <!-- Support: Add the items you want to appear in the support info popup-->
+    <NameInMenu>Get Support!</NameInMenu>
+    <SupportTitle>Contact UC Geek Support</SupportTitle>
+    <Phone>+64 9 5005000</Phone>
+    <Email>support@ucgeek.nz</Email>
+    <EmailSubject>Support Request</EmailSubject>
+    <Web>http://www.ucgeek.nz/</Web>
+  </Support>
+  <MenuItems>
+    <!-- Menu Items: Add the items you want to appear in the menu-->
+    <MenuItem>
+      <Name><![CDATA[Voicemail Setup]]></Name>
+      <Image></Image>
+      <Action><![CDATA[http://www.ucgeek.nz/]]></Action>
+    </MenuItem>
+    <MenuItem>
+      <Name>My Account</Name>
+      <Image></Image>
+      <Action><![CDATA[http://www.ucgeek.nz/]]></Action>
+    </MenuItem>
+    <MenuItem>
+      <Name>Online Help</Name>
+      <Image></Image>
+      <Action><![CDATA[http://www.ucgeek.nz/]]></Action>
+    </MenuItem>
+    <MenuItem>
+      <Name>Training Videos</Name>
+      <Image></Image>
+      <Action><![CDATA[http://www.ucgeek.nz/]]></Action>
+    </MenuItem>
+    <MenuItem>
+      <Name>Test Connection</Name>
+      <Image></Image>
+      <Action><![CDATA[http://www.ucgeek.nz/]]></Action>
+    </MenuItem>
+  </MenuItems>
+  <LyncClient>
+    <CustomMenuItems>
+      <!--Lync Menu: Adds custom menu items to the Lync 2013 client. 
+                     REQUIRES user has access to HKEY_LOCAL_MACHINE. 
+                     DISABLE by removing everything  between <CustomMenuItems> and </CustomMenuItems>-->
+      <MenuItem>
+        <GUID>{07f98b7a-9a3c-4e95-a872-100000000000}</GUID>
+        <!--Use a unique GUID per menu item. I suggest incrementing the GUID number in this example -->
+        <ExtensibleMenu>MainWindowActions;ConversationWindowActions</ExtensibleMenu>
+        <!--A semicolon-delimited list of places where the command appears. Possible values include MainWindowActions, MainWindowRightClick, ConversationWindowActions, and ConversationWindowRightClick-->
+        <Name>UC Geek Blog</Name>
+        <!--The name of the application as it appears in the Lync 2013 UI-->
+        <Path><![CDATA[http://www.ucgeek.nz/]]></Path>
+        <!--File or web e.g. c:\\ext_menu.exe /userId=”%user-id%” /contactId=”%contact-id%”, http://localhost/Test/Sample1.html-->
+      </MenuItem>
+      <MenuItem>
+        <GUID>{07f98b7a-9a3c-4e95-a872-100000000001}</GUID>
+        <!--Remeber to increment!-->
+        <ExtensibleMenu>MainWindowActions;ConversationWindowActions</ExtensibleMenu>
+        <Name>Circuit Tester</Name>
+        <Path><![CDATA[http://www.ucgeek.nz/]]></Path>
+      </MenuItem>
+    </CustomMenuItems>
+  </LyncClient>
+  <RegistryWatchers>
+    <RegistryWatcher>
+      <!--Registry Watcher: Watches a specified registry key item value, and if it changes sets it back to specified value. REQUIRES user has access to required registry keys -->
+      <RegistryView>Registry32</RegistryView>
+      <!-- Registry32/Registry64  -->
+      <RegistryHive>CurrentUser</RegistryHive>
+      <!-- Registry base key e.g. CurrentUser,LocalMachine -->
+      <SubKey>Software\Andrew Morpeth\Customer Support Tool</SubKey>
+      <!-- Registry key path e.g Software\Microsoft\Office\15.0\Lync-->
+      <RegItem>Blog</RegItem>
+      <!-- Registry item to watch-->
+      <RegType></RegType>
+      <!-- Registry item type e.g. DWORD -->
+      <RegItemValue><![CDATA[http://www.ucgeek.nz/]]></RegItemValue>
+      <!-- Value to update on change -->
+    </RegistryWatcher>
+    <RegistryWatcher>
+      <!--Registry Watcher: Watches a specified registry key item value, and if it changes sets it back to specified value. REQUIRES user has access to required registry keys -->
+      <RegistryView>Registry32</RegistryView>
+      <!-- Registry32/Registry64  -->
+      <RegistryHive>CurrentUser</RegistryHive>
+      <!-- Registry base key e.g. CurrentUser,LocalMachine -->
+      <SubKey>Software\Andrew Morpeth\Customer Support Tool</SubKey>
+      <!-- Registry key path e.g Software\Microsoft\Office\15.0\Lync-->
+      <RegItem>ProductPage</RegItem>
+      <!-- Registry item to watch-->
+      <RegType></RegType>
+      <!-- Registry item type e.g. DWORD -->
+      <RegItemValue><![CDATA[http://www.lync.geek.nz/p/customer-support-tool.html/]]></RegItemValue>
+      <!-- Value to update on change -->
+    </RegistryWatcher>
+  </RegistryWatchers>
+  <SettingsWindow>
+    <!-- All settings found within the SettingsWindow node are managed via the applications "Settings" window: right click the task tray icon and select "Settings" -->
+    <Lync>
+      <PresenceSwitcher>
+        <TimeSet1>
+          <Enabled>false</Enabled>
+          <FromTime>07:00:00</FromTime>
+          <ToTime>23:59:59</ToTime>
+          <Availability>Off Work</Availability>
+          <PersonalNote>It's currently outside my normal work hours so may not respond</PersonalNote>
+        </TimeSet1>
+        <TimeSet2>
+          <Enabled>false</Enabled>
+          <FromTime>05:00:00</FromTime>
+          <ToTime>23:59:59</ToTime>
+          <Availability>Busy</Availability>
+          <PersonalNote>Coffee time!</PersonalNote>
+        </TimeSet2>
+        <TimeSet3>
+          <Enabled>false</Enabled>
+          <FromTime>05:00:00</FromTime>
+          <ToTime>23:30:00</ToTime>
+          <Availability>Be Right Back</Availability>
+          <PersonalNote>At Lunch</PersonalNote>
+        </TimeSet3>
+        <TimeSet4>
+          <Enabled>false</Enabled>
+          <FromTime>03:00:00</FromTime>
+          <ToTime>23:15:00</ToTime>
+          <Availability>Sign In - Available</Availability>
+          <PersonalNote>Workin!</PersonalNote>
+        </TimeSet4>
+        <TimeSet5>
+          <Enabled>false</Enabled>
+          <SelectedDaysOfWeek>Saturday, Sunday</SelectedDaysOfWeek>
+          <Availability>Busy</Availability>
+          <PersonalNote>It's the weekend! I may not respond :)</PersonalNote>
+        </TimeSet5>
+        <SetMeAs1>
+          <Enabled>false</Enabled>
+          <Availability>Do Not Disturb</Availability>
+          <Time>20</Time>
+        </SetMeAs1>
+        <SetMeAs2>
+          <Enabled>false</Enabled>
+          <Availability>Do Not Disturb</Availability>
+          <Time>30</Time>
+        </SetMeAs2>
+      </PresenceSwitcher>
+    </Lync>
+  </SettingsWindow>
+</Configuration>

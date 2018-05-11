@@ -1,0 +1,63 @@
+##UC Extend Release Notes##
+
+REQUIREMENTS
+Windows Vista+ (only tested on 8.1)
+Lync 2013 or Skype for Business client (untested on Lync 2010)
+.Net 4.5
+
+#VERSION v1.4.8 - stable
+
+CHANGES
+- Resolved: If the UC client is not started when the application starts, it will need to be restarted to successfully get a handle to the UC client
+- Resolved: Sign-in/Sign-out button does not sign-in
+- Resolved: Set Me As limited to 100 seconds, now 24 hours
+
+
+#VERSION v1.5.x - undergoing testing
+
+INSTALLATION
+Moving from 1.4 -> 1.5
+1. Backup config file located in C:\Users\<username>\AppData\Local\Andrew Morpeth\Customer Support Tool\Settings.xml
+2. Un-install Customer Support Tool (now UC Extend) from control panel
+3. Delete "Customer Support Tool" folder from C:\Users\<username>\AppData\Local\Andrew Morpeth\ (optional - folder is no longer required, data is now installed in UC Extend folder in the same location)
+4. Run UCExtend.msi and follow installation prompts
+5. Run UC Extend - this will create a new Settings.xml file located in C:\Users\<username>\AppData\Local\Andrew Morpeth\UC Extend
+6. There have been some changes to the structure of the settings file, if required merge your backed-up with newly created one. Apologies, this is a manual process as I lack that time to programmatically upgrade it :(
+7. Restart UC Extend and make sure your merged settings are implemented correctly
+8. If you have any trouble or need assistance let me know - http://www.lync.geek.nz/
+
+New Install
+1. Run UCExtend.msi and follow installation prompts
+2. Run UC Extend - this will create a new Settings.xml file located in C:\Users\<username>\AppData\Local\Andrew Morpeth\UC Extend
+3. Edit settings to suit
+4. Restart UC Extend and make sure your merged settings are implemented correctly
+5. If you have any trouble or need assistance let me know - http://www.lync.geek.nz/
+
+CHANGES
+- Renamed to UC Extend throughout. Please follow install instructions to upgrade.
+- Major changes to run as admin mode: Only prompts to run as admin if settings have changed for Skype4B/Lync custom menus. This will be extended to all settings that require admin rights in a latter build.
+- Installer includes an option to run app after install
+- Added save settings confirmation
+- App can now only be run once, multiple instances will not start
+- Added EnableSkypeUI option - after saving, restart Skype4B/Lync client (you could create a registry watcher to enforce this key)
+- Removed presence setting "Appear Offline" as its no longer supported in Lync 2013 or Skype4B
+- Resolved "Off Work" presence state switching to "Away"
+- Added "Inactive" presence state
+- Added a notification pop up when app starts
+- Access settings directly from the Skype4B/Lync via custom menu. If only one of Skype4B or UC Extend is running as admin, this will not work. Either both run as admin, or neither (optional - enabled by default)
+- Access UC Extend settings directly from Skype4B/Lync – The default application settings enable a Lync custom menu. Initial create requires that you have admin rights, if you do not want to use this feature remove from the XML settings file
+- Presence now set after every sign-in
+- Registry watcher now supports string, binary, DWORD and QWORD
+- Resolved: Time durations that span days are not correctly matching e.g. 11pm - 1am 
+- Resolved: If the UC client is not started when the application starts, it will need to be restarted to successfully get a handle to the UC client 
+
+KNOWN ISSUES
+- Set Me As options revert presence to "Available" when conditions are no longer met, this will be resolved in a later build
+- Some error conditions are not yet catered for and may cause the application to crash
+- Settings and input data validation limited
+- Not tested on Lync 2010
+- Switching profiles may break the handle on the Lync client (monitoring)
+- Cannot be run on multiple Windows profiles at the same time. Additional instances of application will crash if you try to do so. Investigating multiple profile support and error messages before exiting.
+
+FEATURE REQUESTS
+- Managed content delivery, initially for the purpose of training
