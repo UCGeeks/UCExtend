@@ -89,6 +89,8 @@
           <ToTime>06:59:59</ToTime>
           <Availability>Off Work</Availability>
           <PersonalNote>It's currently outside my normal work hours so may not respond</PersonalNote>
+          <DontChangePersonalNote>false</DontChangePersonalNote>
+          <RestorePersonalNote>true</RestorePersonalNote>
         </TimeSet1>
         <TimeSet2>
           <Enabled>false</Enabled>
@@ -96,6 +98,8 @@
           <ToTime>23:59:59</ToTime>
           <Availability>Busy</Availability>
           <PersonalNote>Coffee time!</PersonalNote>
+          <DontChangePersonalNote>false</DontChangePersonalNote>
+          <RestorePersonalNote>true</RestorePersonalNote>
         </TimeSet2>
         <TimeSet3>
           <Enabled>false</Enabled>
@@ -103,6 +107,8 @@
           <ToTime>23:30:00</ToTime>
           <Availability>Be Right Back</Availability>
           <PersonalNote>At Lunch</PersonalNote>
+          <DontChangePersonalNote>false</DontChangePersonalNote>
+          <RestorePersonalNote>true</RestorePersonalNote>
         </TimeSet3>
         <TimeSet4>
           <Enabled>true</Enabled>
@@ -110,12 +116,16 @@
           <ToTime>17:00:00</ToTime>
           <Availability>Available</Availability>
           <PersonalNote>Workin!</PersonalNote>
+          <DontChangePersonalNote>false</DontChangePersonalNote>
+          <RestorePersonalNote>true</RestorePersonalNote>
         </TimeSet4>
         <TimeSet5>
           <Enabled>true</Enabled>
           <SelectedDaysOfWeek>Saturday,Sunday</SelectedDaysOfWeek>
           <Availability>Off Work</Availability>
           <PersonalNote>It's the weekend! I may not respond :)</PersonalNote>
+          <DontChangePersonalNote>false</DontChangePersonalNote>
+          <RestorePersonalNote>true</RestorePersonalNote>
         </TimeSet5>
         <SetMeAs1>
           <Enabled>false</Enabled>

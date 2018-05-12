@@ -425,6 +425,10 @@ namespace UCExtend
         private bool UpdatePresenceInfo(string settingAvailablity, string settingPersonalNote)
         {
             //Get Current Presenece Info
+            //TODO
+
+            //Get calculated personal note
+            var personalNote = PersonalNoteHelper(settingPersonalNote);
 
 
             //Update Presence Info
@@ -449,11 +453,12 @@ namespace UCExtend
                 if (lync.LyncClientSignedIn)
                 {
 
-                    lync.SetAvailabilityInfo("Available", settingPersonalNote);
+                    //lync.SetAvailabilityInfo("Available", settingPersonalNote);
+                    SetAvailabilityInfoHelper("Available", personalNote);
 
                     processIcon.BalloonTip(
                     processFriendlyName + " Status Change", "Signing In..." + Environment.NewLine + "Availability: " + settingAvailablity + Environment.NewLine +
-                    "Personal Note: " + settingPersonalNote, balloonTipTime);
+                    "Personal Note: " + personalNote, balloonTipTime);
 
                     return true;
                 }
@@ -462,16 +467,19 @@ namespace UCExtend
             {
                 if (settingAvailablity == "Off Work")
                 {
-                    lync.SetAvailabilityInfo(settingAvailablity, "off-work", settingPersonalNote);
+                    //lync.SetAvailabilityInfo(settingAvailablity, "off-work", settingPersonalNote);
+                    SetAvailabilityInfoHelper(settingAvailablity, "off-work", personalNote);
                 }
                 else
                 {
-                    lync.SetAvailabilityInfo(settingAvailablity, settingPersonalNote);
+                    SetAvailabilityInfoHelper(settingAvailablity, personalNote);
                 }
 
-                processIcon.BalloonTip(
-                    processFriendlyName + " Status Change", "Availability: " + settingAvailablity + Environment.NewLine +
-                    "Personal Note: " + settingPersonalNote, balloonTipTime);
+                //processIcon.BalloonTip(processFriendlyName + " Status Change", 
+                //    "Availability: " + settingAvailablity + Environment.NewLine +
+                //    "Personal Note: " + settingPersonalNote, balloonTipTime);
+
+                BalloonTipStatusChangeHelper(settingAvailablity, personalNote);
 
                 return true;
             }
@@ -479,18 +487,110 @@ namespace UCExtend
             return false;
         }
 
+        private string BalloonTipStatusChangeHelper(string availability, string personalNote)
+        {            
+            if (!string.IsNullOrWhiteSpace(availability) && personalNote != null)
+            {
+                processIcon.BalloonTip(processFriendlyName + " Status Change",
+                   "Availability: " + availability + Environment.NewLine +
+                   "Personal Note: " + personalNote, balloonTipTime);
+            }
+            else if (!string.IsNullOrWhiteSpace(availability) && personalNote == null)
+            {
+                processIcon.BalloonTip(processFriendlyName + " Status Change",
+                   "Availability: " + availability + Environment.NewLine, 
+                   balloonTipTime);
+            }
 
-        private string RetainedPersonalNoteHandler(string availablity, string personalNote)
+            return null;
+        }
+
+        private void SetAvailabilityInfoHelper(string availability, string personalNote)
         {
-            bool RetainCurrentAvailablePersonalNote = true;
-            RetainedPersonalNote = "RetainedPersonalNote";
-            if (availablity == "Available" && RetainCurrentAvailablePersonalNote)
+            if (!string.IsNullOrWhiteSpace(availability) && personalNote != null)
+            {
+                lync.SetAvailabilityInfo(availability, personalNote);
+            }
+            else if (!string.IsNullOrWhiteSpace(availability) && personalNote == null)
+            {
+                lync.SetAvailabilityInfo(availability);
+            }            
+        }
+
+        private void SetAvailabilityInfoHelper(string availability, string activity, string personalNote)
+        {
+            if (!string.IsNullOrWhiteSpace(availability) && personalNote != null)
+            {
+                lync.SetAvailabilityInfo(availability, activity, personalNote);
+            }
+            else if (!string.IsNullOrWhiteSpace(availability) && personalNote == null)
+            {
+                lync.SetAvailabilityInfo(availability, activity, "");
+            }
+        }
+
+        //if personal note not equal to any listed save the note and apply it when outside of any other timer period. 
+        //maybe add a default reset presence time period to enforce this when no other periods are active. 
+        //this way will revert to correct state. this can have the option to set a note or used last used not listed
+        //on start get note regardless if listed
+        //before each presence change get and update the note if not in list
+        //each note can have option to enter blank or text note, or tick box to maintain current
+        //each time period also can have tick box to revert prior custom note
+        //private string PersonalNoteHelper(string availablity, string personalNote)
+        private string PersonalNoteHelper(string personalNote)
+        {
+            //bool RetainCurrentAvailablePersonalNote = true;
+            //RetainedPersonalNote = "RetainedPersonalNote";
+            //if (availablity == "Available" && RetainCurrentAvailablePersonalNote)
+            //{
+            //    return RetainedPersonalNote;
+            //}
+            //else
+            //    return personalNote;
+
+            //labelDontChangePersonalNote1
+            //checkBoxDontChangePersonalNote1
+            //labelRestorePersonalNote1
+            //checkBoxRestorePersonalNote1
+
+            //var test = lync.PersonalNote;
+            var currentPersonalNote = lync.PersonalNote.ToString();
+            if (currentPersonalNote != Settings.PsPersonalNote1 && currentPersonalNote != Settings.PsPersonalNote2 && currentPersonalNote != Settings.PsPersonalNote3
+                && currentPersonalNote != Settings.PsPersonalNote4 && currentPersonalNote != Settings.PsPersonalNote5)
+            {
+                //Current personal note is not one set by UCExtend, assuming custom set by user and saving for reverting purposes
+                RetainedPersonalNote = currentPersonalNote;
+            }
+            else
+            {
+                RetainedPersonalNote = null;
+            }
+
+            var checkBoxDontChangePersonalNote1 = false;
+            var checkBoxRestorePersonalNote1 = true;
+
+            if (checkBoxDontChangePersonalNote1) 
+            {
+                //Dont change personal note
+                return null;
+            }
+            else if (checkBoxRestorePersonalNote1 && RetainedPersonalNote != null)
             {
                 return RetainedPersonalNote;
             }
+            else if (string.IsNullOrWhiteSpace(personalNote))
+            {
+                //Set blank personal note
+                return "";
+            }
             else
+            {
+                //Set PS set personal note
                 return personalNote;
+            }
+
         }
+
 
 
         private string _retainedPersonalNote;

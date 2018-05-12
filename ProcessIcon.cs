@@ -61,7 +61,7 @@ namespace UCExtend
                 menu.lync = lync;
                 ni.ContextMenuStrip = menu.Create();
 
-                BalloonTip("HI! I'm UC Extend...", "I extend you Skype/Lync experience. I'll be running in the task tray should you need me :)" + 
+                BalloonTip("HI! I'm UC Extend...", "I extend your Skype/Lync experience. I'll be running in the task tray should you need me :)" + 
                                         Environment.NewLine + Environment.NewLine + "Have a great day!!", 2000);
 
             }

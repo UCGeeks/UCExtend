@@ -612,6 +612,278 @@ namespace UCExtend
             }
         }
 
+        //Dont Change Personal Notes
+        public static string PsDontChangePersonalNote1
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet1")
+                        .Element("DontChangePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet1")
+                    .Element("DontChangePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        public static string PsDontChangePersonalNote2
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet2")
+                        .Element("DontChangePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet2")
+                    .Element("DontChangePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        public static string PsDontChangePersonalNote3
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet3")
+                        .Element("DontChangePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet3")
+                    .Element("DontChangePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        public static string PsDontChangePersonalNote4
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet4")
+                        .Element("DontChangePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet4")
+                    .Element("DontChangePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        public static string PsDontChangePersonalNote5
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet4")
+                        .Element("DontChangePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet4")
+                    .Element("DontChangePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        //Restore Personal Notes
+        public static string PsRestorePersonalNote1
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet1")
+                        .Element("RestorePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet1")
+                    .Element("RestorePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        public static string PsRestorePersonalNote2
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet2")
+                        .Element("RestorePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet2")
+                    .Element("RestorePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        public static string PsRestorePersonalNote3
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet3")
+                        .Element("RestorePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet3")
+                    .Element("RestorePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        public static string PsRestorePersonalNote4
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet4")
+                        .Element("RestorePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet4")
+                    .Element("RestorePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
+        public static string PsRestorePersonalNote5
+        {
+            get
+            {
+                return
+                    appSettings.Element("Configuration")
+                        .Element("SettingsWindow")
+                        .Element("Lync")
+                        .Element("PresenceSwitcher")
+                        .Element("TimeSet4")
+                        .Element("RestorePersonalNote")
+                        .Value;
+            }
+            set
+            {
+                appSettings.Element("Configuration")
+                    .Element("SettingsWindow")
+                    .Element("Lync")
+                    .Element("PresenceSwitcher")
+                    .Element("TimeSet4")
+                    .Element("RestorePersonalNote")
+                    .Value = value;
+
+                appSettings.Save(settingsFilePath);
+            }
+        }
+
         //Week
         public static string PsEnabled5
         {

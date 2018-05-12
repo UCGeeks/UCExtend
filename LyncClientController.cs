@@ -329,7 +329,9 @@ namespace UCExtend
             if (LyncClientSignedIn && _lyncClient.State == ClientState.SignedIn)
             {
                 //If activity or availablity info is changed
-                if (e.ChangedContactInformation.Contains(ContactInformationType.Activity) || e.ChangedContactInformation.Contains(ContactInformationType.Availability))
+                if (e.ChangedContactInformation.Contains(ContactInformationType.Activity) 
+                    || e.ChangedContactInformation.Contains(ContactInformationType.Availability)
+                    || e.ChangedContactInformation.Contains(ContactInformationType.PersonalNote))
                 {
                     Activity = _lyncClient.Self.Contact.GetContactInformation(ContactInformationType.ActivityId);
                     Availability = (ContactAvailability)_lyncClient.Self.Contact.GetContactInformation(ContactInformationType.Availability);

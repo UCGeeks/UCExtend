@@ -270,7 +270,7 @@ namespace UCExtend
         }
 
         private void SettingsBox_Load(object sender, EventArgs e)
-        {
+        {            
             //subscribe to LccContactInfoEvent event handler for form updates
             lync.LccContactInfoEvent += lync_LccContactInfoEvent;
 
@@ -278,7 +278,7 @@ namespace UCExtend
             //lync.GetContactInfo();
             labelCurrentStatus.Text = "Lync Status: " + lync.Availability + " - " + lync.Activity;
 
-            //Presense switcher check boxes
+            //Presense switcher enabled check boxes
             if (Settings.PsEnabled1 == "true") { checkBoxPresenceSwitcher1.Checked = true; }
             else { checkBoxPresenceSwitcher1.Checked = false; }
             if (Settings.PsEnabled2 == "true") { checkBoxPresenceSwitcher2.Checked = true; }
@@ -289,6 +289,30 @@ namespace UCExtend
             else { checkBoxPresenceSwitcher4.Checked = false; }
             if (Settings.PsEnabled5 == "true") { checkBoxPresenceSwitcherDay.Checked = true; }
             else { checkBoxPresenceSwitcherDay.Checked = false; }
+
+            //Presense switcher dont change personal note check boxes
+            if (Settings.PsDontChangePersonalNote1 == "true") { checkBoxDontChangePersonalNote1.Checked = true; }
+            else { checkBoxDontChangePersonalNote1.Checked = false; }
+            if (Settings.PsDontChangePersonalNote2 == "true") { checkBoxDontChangePersonalNote2.Checked = true; }
+            else { checkBoxDontChangePersonalNote2.Checked = false; }
+            if (Settings.PsDontChangePersonalNote3 == "true") { checkBoxDontChangePersonalNote3.Checked = true; }
+            else { checkBoxDontChangePersonalNote3.Checked = false; }
+            if (Settings.PsDontChangePersonalNote4 == "true") { checkBoxDontChangePersonalNote4.Checked = true; }
+            else { checkBoxDontChangePersonalNote4.Checked = false; }
+            if (Settings.PsDontChangePersonalNote5 == "true") { checkBoxDontChangePersonalNote5.Checked = true; }
+            else { checkBoxDontChangePersonalNote5.Checked = false; }
+
+            //Presense switcher restore personal note check boxes
+            if (Settings.PsRestorePersonalNote1 == "true") { checkBoxRestorePersonalNote1.Checked = true; }
+            else { checkBoxRestorePersonalNote1.Checked = false; }
+            if (Settings.PsRestorePersonalNote2 == "true") { checkBoxRestorePersonalNote2.Checked = true; }
+            else { checkBoxRestorePersonalNote2.Checked = false; }
+            if (Settings.PsRestorePersonalNote3 == "true") { checkBoxRestorePersonalNote3.Checked = true; }
+            else { checkBoxRestorePersonalNote3.Checked = false; }
+            if (Settings.PsRestorePersonalNote4 == "true") { checkBoxRestorePersonalNote4.Checked = true; }
+            else { checkBoxRestorePersonalNote4.Checked = false; }
+            if (Settings.PsRestorePersonalNote5 == "true") { checkBoxRestorePersonalNote5.Checked = true; }
+            else { checkBoxRestorePersonalNote5.Checked = false; }
 
             //From
             dateTimePickerFromPresenceSwitcher1.Value = Convert.ToDateTime(Settings.PsFromTime1);
@@ -368,6 +392,82 @@ namespace UCExtend
             //subscribe = null;
             lync.LccContactInfoEvent -= lync_LccContactInfoEvent;
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
         ///// <summary>
         ///// Day of week check box change events
@@ -470,7 +570,7 @@ namespace UCExtend
         //{
         //    MessageBox.Show("Welcome back!");
         //}
-        
+
         //private void buttonStart_Click(object sender, EventArgs e)
         //{
         //    if (SystemIdleTimer1.IsRunning == false)
