@@ -13,6 +13,7 @@ using System.Windows.Forms;
 //Passing script between WinForms app and embeded browser::
 ////https://stackoverflow.com/questions/14172273/youtube-embedded-player-event-when-video-has-ended
 ////https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/implement-two-way-com-between-dhtml-and-client?redirectedfrom=MSDN
+////https://www.htmlgoodies.com/beyond/video/respond-to-embedded-youtube-video-events.html
 
 namespace UCExtend
 {
@@ -40,16 +41,6 @@ namespace UCExtend
         {
             var selectedVideo = comboBox1.SelectedValue.ToString();
             var selectedVideoId = selectedVideo.Split('=')[1];
-            
-
-            string html = "<html><head>";
-            html += "<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>";
-            html += "<iframe id='video' src='https://www.youtube.com/embed/{0}' width='100%' height='650' frameborder='0' allowfullscreen='allowfullscreen'></iframe>";
-            html += "</body></html>";
-            //?rel=0&autoplay=1
-            //rel='0' autoplay='1'
-            //allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-            //html += @"< iframe width = '560' height = '315' src = 'https://www.youtube.com/embed/{0}' frameborder = '0' allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen ></ iframe >";
 
             webBrowser1.AllowWebBrowserDrop = false;
             webBrowser1.IsWebBrowserContextMenuEnabled = false;
@@ -58,20 +49,7 @@ namespace UCExtend
             // Uncomment the following line when you are finished debugging.
             //webBrowser1.ScriptErrorsSuppressed = true;
 
-            //webBrowser1.DocumentText = string.Format(html, selectedVideoId);
-
-            //This creates an HTML button that when clicked executes javascript which triggers the "PopWinFormsMessageBox" method in C#
-            //webBrowser1.DocumentText =
-            //"<html><head><script>" +
-            //"function popWebMessageBox(message) { alert(message); }" +
-            //"</script></head><body><button " +
-            //"onclick=\"window.external.PopWinFormsMessageBox('Called from the embeded webpage!')\">" +
-            //"call client code from script code</button>" +
-            //"</body></html>";
-
-            //            <iframe id = 'player' width='100%' height='100%' src='http://www.youtube.com/embed/Zgq7y2Bvb9U?autoplay=1&controls=0&enablejsapi=1' frameborder='0' allowfullscreen></iframe>
-
-            
+           
             webBrowser1.DocumentText =
             @"<html>
             <head>
@@ -105,32 +83,6 @@ namespace UCExtend
             </script>
             </body></html>";
 
-//            webBrowser1.DocumentText = @"< html >< head ></ head >< body >
-
-//    < script type = 'text/javascript' src = 'http://www.youtube.com/player_api' ></ script >
-   
-//       < iframe id = ""player"" width = ""100 %"" height = ""100 %"" src = ""http://www.youtube.com/embed/Zgq7y2Bvb9U?autoplay=1&controls=0&enablejsapi=1"" frameborder = ""0"" allowfullscreen ></ iframe >
-              
-//                  < script type = ""text /javascript"" >
-//                   var player;
-//            function onYouTubeIframeAPIReady()
-//            {
-//                player = new YT.Player('player', {
-//            videoId: 'VIDEO_ID',
-//            events:
-//            {
-//                'onStateChange': function(evt){
-//                    if (evt.data == 0)
-//                    {
-//                        window.external.Test('Video finished!!');
-//                    }
-//                }
-//            }
-//        });
-//    }
-//    </script>
-
-//</body></html>";
         }
 
         public void VideoPlayer_Load(object sender, EventArgs e)
@@ -182,6 +134,33 @@ namespace UCExtend
         }
     }
 }
+
+
+
+//string html = "<html><head>";
+//html += "<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>";
+//html += "<iframe id='video' src='https://www.youtube.com/embed/{0}' width='100%' height='650' frameborder='0' allowfullscreen='allowfullscreen'></iframe>";
+//html += "</body></html>";
+//?rel=0&autoplay=1
+//rel='0' autoplay='1'
+//allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+//html += @"< iframe width = '560' height = '315' src = 'https://www.youtube.com/embed/{0}' frameborder = '0' allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen ></ iframe >";
+
+
+
+//webBrowser1.DocumentText = string.Format(html, selectedVideoId);
+
+//This creates an HTML button that when clicked executes javascript which triggers the "PopWinFormsMessageBox" method in C#
+//webBrowser1.DocumentText =
+//"<html><head><script>" +
+//"function popWebMessageBox(message) { alert(message); }" +
+//"</script></head><body><button " +
+//"onclick=\"window.external.PopWinFormsMessageBox('Called from the embeded webpage!')\">" +
+//"call client code from script code</button>" +
+//"</body></html>";
+
+//            <iframe id = 'player' width='100%' height='100%' src='http://www.youtube.com/embed/Zgq7y2Bvb9U?autoplay=1&controls=0&enablejsapi=1' frameborder='0' allowfullscreen></iframe>
+
 
 //var embed = "<html><head>" +
 //            "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +

@@ -148,6 +148,9 @@
     <None Include="user.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HTML\Examples\YouTube Embed JavaScript Creating iFrame.html" />
+    <Content Include="HTML\Examples\YouTube Embed JavaScript Existing iFrame.html" />
+    <Content Include="HTML\YouTubeEmbed.html" />
     <Content Include="SettingsTemplate.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
