@@ -377,7 +377,10 @@ namespace UCExtend
                 {
                     if (!presenceTimer5ActiveProcessed)
                     {
-                        presenceTimer5ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability5, Settings.PsPersonalNote5);
+                        presenceTimer5ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability5,
+                        PersonalNoteHelper(Settings.PsPersonalNote5,
+                        Convert.ToBoolean(Settings.PsDontChangePersonalNote5),
+                        Convert.ToBoolean(Settings.PsRestorePersonalNote5)));
                     }
                 }
             }
@@ -387,7 +390,10 @@ namespace UCExtend
                 {
                     if (!presenceTimer4ActiveProcessed)
                     {
-                        presenceTimer4ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability4, Settings.PsPersonalNote4);
+                        presenceTimer4ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability4,
+                        PersonalNoteHelper(Settings.PsPersonalNote4,
+                        Convert.ToBoolean(Settings.PsDontChangePersonalNote4),
+                        Convert.ToBoolean(Settings.PsRestorePersonalNote4)));
                     }
                 }
             }
@@ -397,7 +403,10 @@ namespace UCExtend
                 {
                     if (!presenceTimer3ActiveProcessed)
                     {
-                        presenceTimer3ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability3, Settings.PsPersonalNote3);
+                        presenceTimer3ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability3,
+                        PersonalNoteHelper(Settings.PsPersonalNote3,
+                        Convert.ToBoolean(Settings.PsDontChangePersonalNote3),
+                        Convert.ToBoolean(Settings.PsRestorePersonalNote3)));
                     }
                 }
             }
@@ -407,7 +416,10 @@ namespace UCExtend
                 {
                     if (!presenceTimer2ActiveProcessed)
                     {
-                        presenceTimer2ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability2, Settings.PsPersonalNote2);
+                        presenceTimer2ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability2,
+                        PersonalNoteHelper(Settings.PsPersonalNote2,
+                        Convert.ToBoolean(Settings.PsDontChangePersonalNote2),
+                        Convert.ToBoolean(Settings.PsRestorePersonalNote2)));
                     }
                 }
 
@@ -416,21 +428,20 @@ namespace UCExtend
             {
                 if (!presenceTimer1ActiveProcessed)
                 {
-                    presenceTimer1ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability1, Settings.PsPersonalNote1);
+                    presenceTimer1ActiveProcessed = UpdatePresenceInfo(Settings.PsAvailability1, 
+                        PersonalNoteHelper(Settings.PsPersonalNote1, 
+                        Convert.ToBoolean(Settings.PsDontChangePersonalNote1), 
+                        Convert.ToBoolean(Settings.PsRestorePersonalNote1)));
                 }
             }
         }
         
 
-        private bool UpdatePresenceInfo(string settingAvailablity, string settingPersonalNote)
+        private bool UpdatePresenceInfo(string settingAvailablity, string personalNote)
         {
-            //Get Current Presenece Info
-            //TODO
-
-            //Get calculated personal note
-            var personalNote = PersonalNoteHelper(settingPersonalNote);
-
-
+            //NOTE: in this context a null personal note means we dont want to change it. 
+            //Null is a valid way to clear an existing personal note so we handle this within
+            
             //Update Presence Info
             if (settingAvailablity == "Sign Out" && lync.LyncClientSignedIn)
             {
@@ -524,8 +535,8 @@ namespace UCExtend
                 lync.SetAvailabilityInfo(availability, activity, personalNote);
             }
             else if (!string.IsNullOrWhiteSpace(availability) && personalNote == null)
-            {
-                lync.SetAvailabilityInfo(availability, activity, "");
+            {                
+                lync.SetAvailabilityInfo(availability, activity, lync.GetPersonalNote());
             }
         }
 
@@ -537,24 +548,9 @@ namespace UCExtend
         //each note can have option to enter blank or text note, or tick box to maintain current
         //each time period also can have tick box to revert prior custom note
         //private string PersonalNoteHelper(string availablity, string personalNote)
-        private string PersonalNoteHelper(string personalNote)
+        private string PersonalNoteHelper(string personalNote, bool DontChangePersonalNote, bool RestorePersonalNote=false)
         {
-            //bool RetainCurrentAvailablePersonalNote = true;
-            //RetainedPersonalNote = "RetainedPersonalNote";
-            //if (availablity == "Available" && RetainCurrentAvailablePersonalNote)
-            //{
-            //    return RetainedPersonalNote;
-            //}
-            //else
-            //    return personalNote;
-
-            //labelDontChangePersonalNote1
-            //checkBoxDontChangePersonalNote1
-            //labelRestorePersonalNote1
-            //checkBoxRestorePersonalNote1
-
-            //var test = lync.PersonalNote;
-            var currentPersonalNote = lync.PersonalNote.ToString();
+            var currentPersonalNote = lync.PersonalNote == null ? "" : lync.PersonalNote.ToString();
             if (currentPersonalNote != Settings.PsPersonalNote1 && currentPersonalNote != Settings.PsPersonalNote2 && currentPersonalNote != Settings.PsPersonalNote3
                 && currentPersonalNote != Settings.PsPersonalNote4 && currentPersonalNote != Settings.PsPersonalNote5)
             {
@@ -566,15 +562,12 @@ namespace UCExtend
                 RetainedPersonalNote = null;
             }
 
-            var checkBoxDontChangePersonalNote1 = false;
-            var checkBoxRestorePersonalNote1 = true;
-
-            if (checkBoxDontChangePersonalNote1) 
+            if (DontChangePersonalNote) 
             {
                 //Dont change personal note
                 return null;
             }
-            else if (checkBoxRestorePersonalNote1 && RetainedPersonalNote != null)
+            else if (RestorePersonalNote && RetainedPersonalNote != null)
             {
                 return RetainedPersonalNote;
             }

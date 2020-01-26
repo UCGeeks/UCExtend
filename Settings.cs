@@ -730,7 +730,7 @@ namespace UCExtend
                         .Element("SettingsWindow")
                         .Element("Lync")
                         .Element("PresenceSwitcher")
-                        .Element("TimeSet4")
+                        .Element("TimeSet5")
                         .Element("DontChangePersonalNote")
                         .Value;
             }
@@ -740,7 +740,7 @@ namespace UCExtend
                     .Element("SettingsWindow")
                     .Element("Lync")
                     .Element("PresenceSwitcher")
-                    .Element("TimeSet4")
+                    .Element("TimeSet5")
                     .Element("DontChangePersonalNote")
                     .Value = value;
 
@@ -866,7 +866,7 @@ namespace UCExtend
                         .Element("SettingsWindow")
                         .Element("Lync")
                         .Element("PresenceSwitcher")
-                        .Element("TimeSet4")
+                        .Element("TimeSet5")
                         .Element("RestorePersonalNote")
                         .Value;
             }
@@ -876,7 +876,7 @@ namespace UCExtend
                     .Element("SettingsWindow")
                     .Element("Lync")
                     .Element("PresenceSwitcher")
-                    .Element("TimeSet4")
+                    .Element("TimeSet5")
                     .Element("RestorePersonalNote")
                     .Value = value;
 

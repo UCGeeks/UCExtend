@@ -32,11 +32,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsBox));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageUCClient = new System.Windows.Forms.TabPage();
+            this.labelRestorePersonalNote5 = new System.Windows.Forms.Label();
+            this.checkBoxRestorePersonalNote5 = new System.Windows.Forms.CheckBox();
+            this.labelDontChangePersonalNote5 = new System.Windows.Forms.Label();
+            this.checkBoxDontChangePersonalNote5 = new System.Windows.Forms.CheckBox();
+            this.labelRestorePersonalNote4 = new System.Windows.Forms.Label();
+            this.checkBoxRestorePersonalNote4 = new System.Windows.Forms.CheckBox();
+            this.labelDontChangePersonalNote4 = new System.Windows.Forms.Label();
+            this.checkBoxDontChangePersonalNote4 = new System.Windows.Forms.CheckBox();
+            this.labelRestorePersonalNote3 = new System.Windows.Forms.Label();
+            this.checkBoxRestorePersonalNote3 = new System.Windows.Forms.CheckBox();
+            this.labelDontChangePersonalNote3 = new System.Windows.Forms.Label();
+            this.checkBoxDontChangePersonalNote3 = new System.Windows.Forms.CheckBox();
+            this.labelRestorePersonalNote2 = new System.Windows.Forms.Label();
+            this.checkBoxRestorePersonalNote2 = new System.Windows.Forms.CheckBox();
+            this.labelDontChangePersonalNote2 = new System.Windows.Forms.Label();
+            this.checkBoxDontChangePersonalNote2 = new System.Windows.Forms.CheckBox();
             this.labelRestorePersonalNote1 = new System.Windows.Forms.Label();
             this.checkBoxRestorePersonalNote1 = new System.Windows.Forms.CheckBox();
             this.labelDontChangePersonalNote1 = new System.Windows.Forms.Label();
             this.checkBoxDontChangePersonalNote1 = new System.Windows.Forms.CheckBox();
-            this.labelBeta = new System.Windows.Forms.Label();
             this.comboBoxSettingsLyncSetMeAs2 = new System.Windows.Forms.ComboBox();
             this.comboBoxSettingsLyncSetMeAs1 = new System.Windows.Forms.ComboBox();
             this.labelSettingsLyncSetMeAsFor2 = new System.Windows.Forms.Label();
@@ -98,6 +113,15 @@
             this.checkBoxPresenceSwitcher1 = new System.Windows.Forms.CheckBox();
             this.labelSettingsLyncTimeOfDayPresenceSwitcher = new System.Windows.Forms.Label();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
+            this.labelNothingtoSee = new System.Windows.Forms.Label();
+            this.buttonSaveSettings = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.labelSettingsSavedTime = new System.Windows.Forms.Label();
+            this.tabPageOld = new System.Windows.Forms.TabPage();
+            this.groupBoxEnableSkypeUI = new System.Windows.Forms.GroupBox();
+            this.radioButtonSkypeUITrue = new System.Windows.Forms.RadioButton();
+            this.radioButtonSkypeUIFalse = new System.Windows.Forms.RadioButton();
+            this.labelLyncUI = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -114,35 +138,12 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelNothingtoSee = new System.Windows.Forms.Label();
-            this.buttonSaveSettings = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.labelSettingsSavedTime = new System.Windows.Forms.Label();
-            this.labelRestorePersonalNote2 = new System.Windows.Forms.Label();
-            this.checkBoxRestorePersonalNote2 = new System.Windows.Forms.CheckBox();
-            this.labelDontChangePersonalNote2 = new System.Windows.Forms.Label();
-            this.checkBoxDontChangePersonalNote2 = new System.Windows.Forms.CheckBox();
-            this.labelRestorePersonalNote3 = new System.Windows.Forms.Label();
-            this.checkBoxRestorePersonalNote3 = new System.Windows.Forms.CheckBox();
-            this.labelDontChangePersonalNote3 = new System.Windows.Forms.Label();
-            this.checkBoxDontChangePersonalNote3 = new System.Windows.Forms.CheckBox();
-            this.labelRestorePersonalNote4 = new System.Windows.Forms.Label();
-            this.checkBoxRestorePersonalNote4 = new System.Windows.Forms.CheckBox();
-            this.labelDontChangePersonalNote4 = new System.Windows.Forms.Label();
-            this.checkBoxDontChangePersonalNote4 = new System.Windows.Forms.CheckBox();
-            this.groupBoxEnableSkypeUI = new System.Windows.Forms.GroupBox();
-            this.radioButtonSkypeUITrue = new System.Windows.Forms.RadioButton();
-            this.radioButtonSkypeUIFalse = new System.Windows.Forms.RadioButton();
-            this.labelLyncUI = new System.Windows.Forms.Label();
-            this.labelRestorePersonalNote5 = new System.Windows.Forms.Label();
-            this.checkBoxRestorePersonalNote5 = new System.Windows.Forms.CheckBox();
-            this.labelDontChangePersonalNote5 = new System.Windows.Forms.Label();
-            this.checkBoxDontChangePersonalNote5 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPageUCClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsLyncSetMeAs2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsLyncSetMeAs1)).BeginInit();
             this.tabPageGeneral.SuspendLayout();
+            this.tabPageOld.SuspendLayout();
             this.groupBoxEnableSkypeUI.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,10 +151,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPageUCClient);
             this.tabControl1.Controls.Add(this.tabPageGeneral);
+            this.tabControl1.Controls.Add(this.tabPageOld);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1001, 455);
+            this.tabControl1.Size = new System.Drawing.Size(800, 455);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageUCClient
@@ -178,7 +180,6 @@
             this.tabPageUCClient.Controls.Add(this.checkBoxRestorePersonalNote1);
             this.tabPageUCClient.Controls.Add(this.labelDontChangePersonalNote1);
             this.tabPageUCClient.Controls.Add(this.checkBoxDontChangePersonalNote1);
-            this.tabPageUCClient.Controls.Add(this.labelBeta);
             this.tabPageUCClient.Controls.Add(this.comboBoxSettingsLyncSetMeAs2);
             this.tabPageUCClient.Controls.Add(this.comboBoxSettingsLyncSetMeAs1);
             this.tabPageUCClient.Controls.Add(this.labelSettingsLyncSetMeAsFor2);
@@ -242,10 +243,162 @@
             this.tabPageUCClient.Location = new System.Drawing.Point(4, 22);
             this.tabPageUCClient.Name = "tabPageUCClient";
             this.tabPageUCClient.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageUCClient.Size = new System.Drawing.Size(993, 429);
+            this.tabPageUCClient.Size = new System.Drawing.Size(792, 429);
             this.tabPageUCClient.TabIndex = 1;
             this.tabPageUCClient.Text = "Skype4B/Lync";
             this.tabPageUCClient.UseVisualStyleBackColor = true;
+            // 
+            // labelRestorePersonalNote5
+            // 
+            this.labelRestorePersonalNote5.AutoSize = true;
+            this.labelRestorePersonalNote5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRestorePersonalNote5.Location = new System.Drawing.Point(306, 269);
+            this.labelRestorePersonalNote5.Name = "labelRestorePersonalNote5";
+            this.labelRestorePersonalNote5.Size = new System.Drawing.Size(69, 13);
+            this.labelRestorePersonalNote5.TabIndex = 117;
+            this.labelRestorePersonalNote5.Text = "Restore Own";
+            // 
+            // checkBoxRestorePersonalNote5
+            // 
+            this.checkBoxRestorePersonalNote5.AutoSize = true;
+            this.checkBoxRestorePersonalNote5.Location = new System.Drawing.Point(377, 269);
+            this.checkBoxRestorePersonalNote5.Name = "checkBoxRestorePersonalNote5";
+            this.checkBoxRestorePersonalNote5.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxRestorePersonalNote5.TabIndex = 116;
+            this.checkBoxRestorePersonalNote5.UseVisualStyleBackColor = true;
+            // 
+            // labelDontChangePersonalNote5
+            // 
+            this.labelDontChangePersonalNote5.AutoSize = true;
+            this.labelDontChangePersonalNote5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDontChangePersonalNote5.Location = new System.Drawing.Point(213, 269);
+            this.labelDontChangePersonalNote5.Name = "labelDontChangePersonalNote5";
+            this.labelDontChangePersonalNote5.Size = new System.Drawing.Size(72, 13);
+            this.labelDontChangePersonalNote5.TabIndex = 115;
+            this.labelDontChangePersonalNote5.Text = "Don\'t Change";
+            // 
+            // checkBoxDontChangePersonalNote5
+            // 
+            this.checkBoxDontChangePersonalNote5.AutoSize = true;
+            this.checkBoxDontChangePersonalNote5.Location = new System.Drawing.Point(288, 269);
+            this.checkBoxDontChangePersonalNote5.Name = "checkBoxDontChangePersonalNote5";
+            this.checkBoxDontChangePersonalNote5.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxDontChangePersonalNote5.TabIndex = 114;
+            this.checkBoxDontChangePersonalNote5.UseVisualStyleBackColor = true;
+            // 
+            // labelRestorePersonalNote4
+            // 
+            this.labelRestorePersonalNote4.AutoSize = true;
+            this.labelRestorePersonalNote4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRestorePersonalNote4.Location = new System.Drawing.Point(306, 223);
+            this.labelRestorePersonalNote4.Name = "labelRestorePersonalNote4";
+            this.labelRestorePersonalNote4.Size = new System.Drawing.Size(69, 13);
+            this.labelRestorePersonalNote4.TabIndex = 113;
+            this.labelRestorePersonalNote4.Text = "Restore Own";
+            // 
+            // checkBoxRestorePersonalNote4
+            // 
+            this.checkBoxRestorePersonalNote4.AutoSize = true;
+            this.checkBoxRestorePersonalNote4.Location = new System.Drawing.Point(377, 223);
+            this.checkBoxRestorePersonalNote4.Name = "checkBoxRestorePersonalNote4";
+            this.checkBoxRestorePersonalNote4.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxRestorePersonalNote4.TabIndex = 112;
+            this.checkBoxRestorePersonalNote4.UseVisualStyleBackColor = true;
+            // 
+            // labelDontChangePersonalNote4
+            // 
+            this.labelDontChangePersonalNote4.AutoSize = true;
+            this.labelDontChangePersonalNote4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDontChangePersonalNote4.Location = new System.Drawing.Point(213, 223);
+            this.labelDontChangePersonalNote4.Name = "labelDontChangePersonalNote4";
+            this.labelDontChangePersonalNote4.Size = new System.Drawing.Size(72, 13);
+            this.labelDontChangePersonalNote4.TabIndex = 111;
+            this.labelDontChangePersonalNote4.Text = "Don\'t Change";
+            // 
+            // checkBoxDontChangePersonalNote4
+            // 
+            this.checkBoxDontChangePersonalNote4.AutoSize = true;
+            this.checkBoxDontChangePersonalNote4.Location = new System.Drawing.Point(288, 223);
+            this.checkBoxDontChangePersonalNote4.Name = "checkBoxDontChangePersonalNote4";
+            this.checkBoxDontChangePersonalNote4.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxDontChangePersonalNote4.TabIndex = 110;
+            this.checkBoxDontChangePersonalNote4.UseVisualStyleBackColor = true;
+            // 
+            // labelRestorePersonalNote3
+            // 
+            this.labelRestorePersonalNote3.AutoSize = true;
+            this.labelRestorePersonalNote3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRestorePersonalNote3.Location = new System.Drawing.Point(305, 175);
+            this.labelRestorePersonalNote3.Name = "labelRestorePersonalNote3";
+            this.labelRestorePersonalNote3.Size = new System.Drawing.Size(69, 13);
+            this.labelRestorePersonalNote3.TabIndex = 109;
+            this.labelRestorePersonalNote3.Text = "Restore Own";
+            // 
+            // checkBoxRestorePersonalNote3
+            // 
+            this.checkBoxRestorePersonalNote3.AutoSize = true;
+            this.checkBoxRestorePersonalNote3.Location = new System.Drawing.Point(376, 175);
+            this.checkBoxRestorePersonalNote3.Name = "checkBoxRestorePersonalNote3";
+            this.checkBoxRestorePersonalNote3.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxRestorePersonalNote3.TabIndex = 108;
+            this.checkBoxRestorePersonalNote3.UseVisualStyleBackColor = true;
+            // 
+            // labelDontChangePersonalNote3
+            // 
+            this.labelDontChangePersonalNote3.AutoSize = true;
+            this.labelDontChangePersonalNote3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDontChangePersonalNote3.Location = new System.Drawing.Point(212, 175);
+            this.labelDontChangePersonalNote3.Name = "labelDontChangePersonalNote3";
+            this.labelDontChangePersonalNote3.Size = new System.Drawing.Size(72, 13);
+            this.labelDontChangePersonalNote3.TabIndex = 107;
+            this.labelDontChangePersonalNote3.Text = "Don\'t Change";
+            // 
+            // checkBoxDontChangePersonalNote3
+            // 
+            this.checkBoxDontChangePersonalNote3.AutoSize = true;
+            this.checkBoxDontChangePersonalNote3.Location = new System.Drawing.Point(287, 175);
+            this.checkBoxDontChangePersonalNote3.Name = "checkBoxDontChangePersonalNote3";
+            this.checkBoxDontChangePersonalNote3.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxDontChangePersonalNote3.TabIndex = 106;
+            this.checkBoxDontChangePersonalNote3.UseVisualStyleBackColor = true;
+            // 
+            // labelRestorePersonalNote2
+            // 
+            this.labelRestorePersonalNote2.AutoSize = true;
+            this.labelRestorePersonalNote2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRestorePersonalNote2.Location = new System.Drawing.Point(305, 129);
+            this.labelRestorePersonalNote2.Name = "labelRestorePersonalNote2";
+            this.labelRestorePersonalNote2.Size = new System.Drawing.Size(69, 13);
+            this.labelRestorePersonalNote2.TabIndex = 105;
+            this.labelRestorePersonalNote2.Text = "Restore Own";
+            // 
+            // checkBoxRestorePersonalNote2
+            // 
+            this.checkBoxRestorePersonalNote2.AutoSize = true;
+            this.checkBoxRestorePersonalNote2.Location = new System.Drawing.Point(376, 129);
+            this.checkBoxRestorePersonalNote2.Name = "checkBoxRestorePersonalNote2";
+            this.checkBoxRestorePersonalNote2.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxRestorePersonalNote2.TabIndex = 104;
+            this.checkBoxRestorePersonalNote2.UseVisualStyleBackColor = true;
+            // 
+            // labelDontChangePersonalNote2
+            // 
+            this.labelDontChangePersonalNote2.AutoSize = true;
+            this.labelDontChangePersonalNote2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDontChangePersonalNote2.Location = new System.Drawing.Point(212, 129);
+            this.labelDontChangePersonalNote2.Name = "labelDontChangePersonalNote2";
+            this.labelDontChangePersonalNote2.Size = new System.Drawing.Size(72, 13);
+            this.labelDontChangePersonalNote2.TabIndex = 103;
+            this.labelDontChangePersonalNote2.Text = "Don\'t Change";
+            // 
+            // checkBoxDontChangePersonalNote2
+            // 
+            this.checkBoxDontChangePersonalNote2.AutoSize = true;
+            this.checkBoxDontChangePersonalNote2.Location = new System.Drawing.Point(287, 129);
+            this.checkBoxDontChangePersonalNote2.Name = "checkBoxDontChangePersonalNote2";
+            this.checkBoxDontChangePersonalNote2.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxDontChangePersonalNote2.TabIndex = 102;
+            this.checkBoxDontChangePersonalNote2.UseVisualStyleBackColor = true;
             // 
             // labelRestorePersonalNote1
             // 
@@ -284,17 +437,6 @@
             this.checkBoxDontChangePersonalNote1.Size = new System.Drawing.Size(15, 14);
             this.checkBoxDontChangePersonalNote1.TabIndex = 95;
             this.checkBoxDontChangePersonalNote1.UseVisualStyleBackColor = true;
-            // 
-            // labelBeta
-            // 
-            this.labelBeta.AutoSize = true;
-            this.labelBeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBeta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.labelBeta.Location = new System.Drawing.Point(788, 3);
-            this.labelBeta.Name = "labelBeta";
-            this.labelBeta.Size = new System.Drawing.Size(35, 15);
-            this.labelBeta.TabIndex = 83;
-            this.labelBeta.Text = "beta";
             // 
             // comboBoxSettingsLyncSetMeAs2
             // 
@@ -462,7 +604,7 @@
             // 
             this.labelSettingsSunday.AutoSize = true;
             this.labelSettingsSunday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsSunday.Location = new System.Drawing.Point(940, 169);
+            this.labelSettingsSunday.Location = new System.Drawing.Point(733, 248);
             this.labelSettingsSunday.Name = "labelSettingsSunday";
             this.labelSettingsSunday.Size = new System.Drawing.Size(15, 13);
             this.labelSettingsSunday.TabIndex = 50;
@@ -471,7 +613,7 @@
             // checkBoxSettingsSunday
             // 
             this.checkBoxSettingsSunday.AutoSize = true;
-            this.checkBoxSettingsSunday.Location = new System.Drawing.Point(960, 170);
+            this.checkBoxSettingsSunday.Location = new System.Drawing.Point(753, 249);
             this.checkBoxSettingsSunday.Name = "checkBoxSettingsSunday";
             this.checkBoxSettingsSunday.Size = new System.Drawing.Size(15, 14);
             this.checkBoxSettingsSunday.TabIndex = 49;
@@ -481,7 +623,7 @@
             // 
             this.labelSettingsSaturday.AutoSize = true;
             this.labelSettingsSaturday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsSaturday.Location = new System.Drawing.Point(899, 169);
+            this.labelSettingsSaturday.Location = new System.Drawing.Point(692, 248);
             this.labelSettingsSaturday.Name = "labelSettingsSaturday";
             this.labelSettingsSaturday.Size = new System.Drawing.Size(15, 13);
             this.labelSettingsSaturday.TabIndex = 48;
@@ -490,7 +632,7 @@
             // checkBoxSettingsSaturday
             // 
             this.checkBoxSettingsSaturday.AutoSize = true;
-            this.checkBoxSettingsSaturday.Location = new System.Drawing.Point(919, 170);
+            this.checkBoxSettingsSaturday.Location = new System.Drawing.Point(712, 249);
             this.checkBoxSettingsSaturday.Name = "checkBoxSettingsSaturday";
             this.checkBoxSettingsSaturday.Size = new System.Drawing.Size(15, 14);
             this.checkBoxSettingsSaturday.TabIndex = 47;
@@ -500,7 +642,7 @@
             // 
             this.labelSettingsFriday.AutoSize = true;
             this.labelSettingsFriday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsFriday.Location = new System.Drawing.Point(858, 169);
+            this.labelSettingsFriday.Location = new System.Drawing.Point(651, 248);
             this.labelSettingsFriday.Name = "labelSettingsFriday";
             this.labelSettingsFriday.Size = new System.Drawing.Size(14, 13);
             this.labelSettingsFriday.TabIndex = 46;
@@ -509,7 +651,7 @@
             // checkBoxSettingsFriday
             // 
             this.checkBoxSettingsFriday.AutoSize = true;
-            this.checkBoxSettingsFriday.Location = new System.Drawing.Point(878, 170);
+            this.checkBoxSettingsFriday.Location = new System.Drawing.Point(671, 249);
             this.checkBoxSettingsFriday.Name = "checkBoxSettingsFriday";
             this.checkBoxSettingsFriday.Size = new System.Drawing.Size(15, 14);
             this.checkBoxSettingsFriday.TabIndex = 45;
@@ -519,7 +661,7 @@
             // 
             this.labelSettingsThursday.AutoSize = true;
             this.labelSettingsThursday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsThursday.Location = new System.Drawing.Point(817, 169);
+            this.labelSettingsThursday.Location = new System.Drawing.Point(610, 248);
             this.labelSettingsThursday.Name = "labelSettingsThursday";
             this.labelSettingsThursday.Size = new System.Drawing.Size(15, 13);
             this.labelSettingsThursday.TabIndex = 44;
@@ -528,7 +670,7 @@
             // checkBoxSettingsThursday
             // 
             this.checkBoxSettingsThursday.AutoSize = true;
-            this.checkBoxSettingsThursday.Location = new System.Drawing.Point(837, 170);
+            this.checkBoxSettingsThursday.Location = new System.Drawing.Point(630, 249);
             this.checkBoxSettingsThursday.Name = "checkBoxSettingsThursday";
             this.checkBoxSettingsThursday.Size = new System.Drawing.Size(15, 14);
             this.checkBoxSettingsThursday.TabIndex = 43;
@@ -538,7 +680,7 @@
             // 
             this.labelSettingsWednesday.AutoSize = true;
             this.labelSettingsWednesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsWednesday.Location = new System.Drawing.Point(776, 169);
+            this.labelSettingsWednesday.Location = new System.Drawing.Point(569, 248);
             this.labelSettingsWednesday.Name = "labelSettingsWednesday";
             this.labelSettingsWednesday.Size = new System.Drawing.Size(19, 13);
             this.labelSettingsWednesday.TabIndex = 42;
@@ -547,7 +689,7 @@
             // checkBoxSettingsWednesday
             // 
             this.checkBoxSettingsWednesday.AutoSize = true;
-            this.checkBoxSettingsWednesday.Location = new System.Drawing.Point(796, 170);
+            this.checkBoxSettingsWednesday.Location = new System.Drawing.Point(589, 249);
             this.checkBoxSettingsWednesday.Name = "checkBoxSettingsWednesday";
             this.checkBoxSettingsWednesday.Size = new System.Drawing.Size(15, 14);
             this.checkBoxSettingsWednesday.TabIndex = 41;
@@ -557,7 +699,7 @@
             // 
             this.labelSettingsTuesday.AutoSize = true;
             this.labelSettingsTuesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsTuesday.Location = new System.Drawing.Point(735, 169);
+            this.labelSettingsTuesday.Location = new System.Drawing.Point(528, 248);
             this.labelSettingsTuesday.Name = "labelSettingsTuesday";
             this.labelSettingsTuesday.Size = new System.Drawing.Size(15, 13);
             this.labelSettingsTuesday.TabIndex = 40;
@@ -566,7 +708,7 @@
             // checkBoxSettingsTuesday
             // 
             this.checkBoxSettingsTuesday.AutoSize = true;
-            this.checkBoxSettingsTuesday.Location = new System.Drawing.Point(755, 170);
+            this.checkBoxSettingsTuesday.Location = new System.Drawing.Point(548, 249);
             this.checkBoxSettingsTuesday.Name = "checkBoxSettingsTuesday";
             this.checkBoxSettingsTuesday.Size = new System.Drawing.Size(15, 14);
             this.checkBoxSettingsTuesday.TabIndex = 39;
@@ -576,7 +718,7 @@
             // 
             this.labelSettingsMonday.AutoSize = true;
             this.labelSettingsMonday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsMonday.Location = new System.Drawing.Point(694, 169);
+            this.labelSettingsMonday.Location = new System.Drawing.Point(487, 248);
             this.labelSettingsMonday.Name = "labelSettingsMonday";
             this.labelSettingsMonday.Size = new System.Drawing.Size(17, 13);
             this.labelSettingsMonday.TabIndex = 38;
@@ -585,7 +727,7 @@
             // checkBoxSettingsMonday
             // 
             this.checkBoxSettingsMonday.AutoSize = true;
-            this.checkBoxSettingsMonday.Location = new System.Drawing.Point(714, 170);
+            this.checkBoxSettingsMonday.Location = new System.Drawing.Point(507, 249);
             this.checkBoxSettingsMonday.Name = "checkBoxSettingsMonday";
             this.checkBoxSettingsMonday.Size = new System.Drawing.Size(15, 14);
             this.checkBoxSettingsMonday.TabIndex = 37;
@@ -595,7 +737,7 @@
             // 
             this.labelTimePeriod.AutoSize = true;
             this.labelTimePeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTimePeriod.Location = new System.Drawing.Point(694, 39);
+            this.labelTimePeriod.Location = new System.Drawing.Point(485, 39);
             this.labelTimePeriod.Name = "labelTimePeriod";
             this.labelTimePeriod.Size = new System.Drawing.Size(66, 13);
             this.labelTimePeriod.TabIndex = 35;
@@ -645,7 +787,7 @@
             // 
             this.labelPresenceSwitcher2.AutoSize = true;
             this.labelPresenceSwitcher2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPresenceSwitcher2.Location = new System.Drawing.Point(815, 88);
+            this.labelPresenceSwitcher2.Location = new System.Drawing.Point(606, 111);
             this.labelPresenceSwitcher2.Name = "labelPresenceSwitcher2";
             this.labelPresenceSwitcher2.Size = new System.Drawing.Size(20, 13);
             this.labelPresenceSwitcher2.TabIndex = 29;
@@ -655,7 +797,7 @@
             // 
             this.labelPresenceSwitcher3.AutoSize = true;
             this.labelPresenceSwitcher3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPresenceSwitcher3.Location = new System.Drawing.Point(815, 114);
+            this.labelPresenceSwitcher3.Location = new System.Drawing.Point(606, 157);
             this.labelPresenceSwitcher3.Name = "labelPresenceSwitcher3";
             this.labelPresenceSwitcher3.Size = new System.Drawing.Size(20, 13);
             this.labelPresenceSwitcher3.TabIndex = 28;
@@ -665,7 +807,7 @@
             // 
             this.labelPresenceSwitcher4.AutoSize = true;
             this.labelPresenceSwitcher4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPresenceSwitcher4.Location = new System.Drawing.Point(815, 141);
+            this.labelPresenceSwitcher4.Location = new System.Drawing.Point(606, 205);
             this.labelPresenceSwitcher4.Name = "labelPresenceSwitcher4";
             this.labelPresenceSwitcher4.Size = new System.Drawing.Size(20, 13);
             this.labelPresenceSwitcher4.TabIndex = 27;
@@ -693,7 +835,7 @@
             // dateTimePickerToPresenceSwitcher2
             // 
             this.dateTimePickerToPresenceSwitcher2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerToPresenceSwitcher2.Location = new System.Drawing.Point(846, 84);
+            this.dateTimePickerToPresenceSwitcher2.Location = new System.Drawing.Point(637, 107);
             this.dateTimePickerToPresenceSwitcher2.Name = "dateTimePickerToPresenceSwitcher2";
             this.dateTimePickerToPresenceSwitcher2.ShowUpDown = true;
             this.dateTimePickerToPresenceSwitcher2.Size = new System.Drawing.Size(109, 20);
@@ -702,7 +844,7 @@
             // dateTimePickerFromPresenceSwitcher2
             // 
             this.dateTimePickerFromPresenceSwitcher2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerFromPresenceSwitcher2.Location = new System.Drawing.Point(697, 83);
+            this.dateTimePickerFromPresenceSwitcher2.Location = new System.Drawing.Point(488, 106);
             this.dateTimePickerFromPresenceSwitcher2.Name = "dateTimePickerFromPresenceSwitcher2";
             this.dateTimePickerFromPresenceSwitcher2.ShowUpDown = true;
             this.dateTimePickerFromPresenceSwitcher2.Size = new System.Drawing.Size(106, 20);
@@ -730,7 +872,7 @@
             // dateTimePickerToPresenceSwitcher3
             // 
             this.dateTimePickerToPresenceSwitcher3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerToPresenceSwitcher3.Location = new System.Drawing.Point(846, 110);
+            this.dateTimePickerToPresenceSwitcher3.Location = new System.Drawing.Point(637, 153);
             this.dateTimePickerToPresenceSwitcher3.Name = "dateTimePickerToPresenceSwitcher3";
             this.dateTimePickerToPresenceSwitcher3.ShowUpDown = true;
             this.dateTimePickerToPresenceSwitcher3.Size = new System.Drawing.Size(109, 20);
@@ -739,7 +881,7 @@
             // dateTimePickerFromPresenceSwitcher3
             // 
             this.dateTimePickerFromPresenceSwitcher3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerFromPresenceSwitcher3.Location = new System.Drawing.Point(697, 109);
+            this.dateTimePickerFromPresenceSwitcher3.Location = new System.Drawing.Point(488, 152);
             this.dateTimePickerFromPresenceSwitcher3.Name = "dateTimePickerFromPresenceSwitcher3";
             this.dateTimePickerFromPresenceSwitcher3.ShowUpDown = true;
             this.dateTimePickerFromPresenceSwitcher3.Size = new System.Drawing.Size(106, 20);
@@ -767,7 +909,7 @@
             // dateTimePickerToPresenceSwitcher4
             // 
             this.dateTimePickerToPresenceSwitcher4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerToPresenceSwitcher4.Location = new System.Drawing.Point(846, 137);
+            this.dateTimePickerToPresenceSwitcher4.Location = new System.Drawing.Point(637, 201);
             this.dateTimePickerToPresenceSwitcher4.Name = "dateTimePickerToPresenceSwitcher4";
             this.dateTimePickerToPresenceSwitcher4.ShowUpDown = true;
             this.dateTimePickerToPresenceSwitcher4.Size = new System.Drawing.Size(109, 20);
@@ -776,7 +918,7 @@
             // dateTimePickerFromPresenceSwitcher4
             // 
             this.dateTimePickerFromPresenceSwitcher4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerFromPresenceSwitcher4.Location = new System.Drawing.Point(697, 136);
+            this.dateTimePickerFromPresenceSwitcher4.Location = new System.Drawing.Point(488, 200);
             this.dateTimePickerFromPresenceSwitcher4.Name = "dateTimePickerFromPresenceSwitcher4";
             this.dateTimePickerFromPresenceSwitcher4.ShowUpDown = true;
             this.dateTimePickerFromPresenceSwitcher4.Size = new System.Drawing.Size(106, 20);
@@ -794,7 +936,7 @@
             // 
             this.labelPresenceSwitcher1.AutoSize = true;
             this.labelPresenceSwitcher1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPresenceSwitcher1.Location = new System.Drawing.Point(815, 62);
+            this.labelPresenceSwitcher1.Location = new System.Drawing.Point(606, 62);
             this.labelPresenceSwitcher1.Name = "labelPresenceSwitcher1";
             this.labelPresenceSwitcher1.Size = new System.Drawing.Size(20, 13);
             this.labelPresenceSwitcher1.TabIndex = 8;
@@ -814,7 +956,7 @@
             // dateTimePickerToPresenceSwitcher1
             // 
             this.dateTimePickerToPresenceSwitcher1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerToPresenceSwitcher1.Location = new System.Drawing.Point(846, 58);
+            this.dateTimePickerToPresenceSwitcher1.Location = new System.Drawing.Point(637, 58);
             this.dateTimePickerToPresenceSwitcher1.Name = "dateTimePickerToPresenceSwitcher1";
             this.dateTimePickerToPresenceSwitcher1.ShowUpDown = true;
             this.dateTimePickerToPresenceSwitcher1.Size = new System.Drawing.Size(109, 20);
@@ -823,7 +965,7 @@
             // dateTimePickerFromPresenceSwitcher1
             // 
             this.dateTimePickerFromPresenceSwitcher1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerFromPresenceSwitcher1.Location = new System.Drawing.Point(697, 57);
+            this.dateTimePickerFromPresenceSwitcher1.Location = new System.Drawing.Point(488, 57);
             this.dateTimePickerFromPresenceSwitcher1.Name = "dateTimePickerFromPresenceSwitcher1";
             this.dateTimePickerFromPresenceSwitcher1.ShowUpDown = true;
             this.dateTimePickerFromPresenceSwitcher1.Size = new System.Drawing.Size(106, 20);
@@ -877,211 +1019,14 @@
             // 
             // tabPageGeneral
             // 
-            this.tabPageGeneral.Controls.Add(this.groupBoxEnableSkypeUI);
-            this.tabPageGeneral.Controls.Add(this.labelLyncUI);
-            this.tabPageGeneral.Controls.Add(this.textBox2);
-            this.tabPageGeneral.Controls.Add(this.label6);
-            this.tabPageGeneral.Controls.Add(this.comboBox2);
-            this.tabPageGeneral.Controls.Add(this.dateTimePicker3);
-            this.tabPageGeneral.Controls.Add(this.dateTimePicker4);
-            this.tabPageGeneral.Controls.Add(this.checkBox2);
-            this.tabPageGeneral.Controls.Add(this.label2);
-            this.tabPageGeneral.Controls.Add(this.label3);
-            this.tabPageGeneral.Controls.Add(this.label4);
-            this.tabPageGeneral.Controls.Add(this.textBox1);
-            this.tabPageGeneral.Controls.Add(this.label5);
-            this.tabPageGeneral.Controls.Add(this.comboBox1);
-            this.tabPageGeneral.Controls.Add(this.dateTimePicker1);
-            this.tabPageGeneral.Controls.Add(this.dateTimePicker2);
-            this.tabPageGeneral.Controls.Add(this.checkBox1);
-            this.tabPageGeneral.Controls.Add(this.label1);
             this.tabPageGeneral.Controls.Add(this.labelNothingtoSee);
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(993, 429);
+            this.tabPageGeneral.Size = new System.Drawing.Size(792, 429);
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(226, 377);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(250, 20);
-            this.textBox2.TabIndex = 98;
-            this.textBox2.Text = "+6495005000";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Enabled = false;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(612, 382);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(20, 13);
-            this.label6.TabIndex = 97;
-            this.label6.Text = "To";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Enabled = false;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(57, 376);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(150, 21);
-            this.comboBox2.TabIndex = 96;
-            this.comboBox2.Text = "Voice Mail";
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Enabled = false;
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker3.Location = new System.Drawing.Point(643, 378);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.ShowUpDown = true;
-            this.dateTimePicker3.Size = new System.Drawing.Size(109, 20);
-            this.dateTimePicker3.TabIndex = 95;
-            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Enabled = false;
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker4.Location = new System.Drawing.Point(494, 377);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.ShowUpDown = true;
-            this.dateTimePicker4.Size = new System.Drawing.Size(106, 20);
-            this.dateTimePicker4.TabIndex = 94;
-            this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Enabled = false;
-            this.checkBox2.Location = new System.Drawing.Point(36, 378);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 93;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(491, 333);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
-            this.label2.TabIndex = 92;
-            this.label2.Text = "Time Period:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Enabled = false;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 332);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 91;
-            this.label3.Text = "Action:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(223, 332);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 13);
-            this.label4.TabIndex = 90;
-            this.label4.Text = "Personal Note:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(226, 350);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 20);
-            this.textBox1.TabIndex = 89;
-            this.textBox1.Text = "+6495005000";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Enabled = false;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(612, 355);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 13);
-            this.label5.TabIndex = 88;
-            this.label5.Text = "To";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(57, 349);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 21);
-            this.comboBox1.TabIndex = 87;
-            this.comboBox1.Text = "Number";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(643, 351);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(109, 20);
-            this.dateTimePicker1.TabIndex = 86;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Enabled = false;
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(494, 350);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.ShowUpDown = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(106, 20);
-            this.dateTimePicker2.TabIndex = 85;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(36, 351);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 84;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Enabled = false;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 308);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 13);
-            this.label1.TabIndex = 83;
-            this.label1.Text = "Unanswered Calls";
             // 
             // labelNothingtoSee
             // 
@@ -1095,7 +1040,7 @@
             // 
             // buttonSaveSettings
             // 
-            this.buttonSaveSettings.Location = new System.Drawing.Point(609, 473);
+            this.buttonSaveSettings.Location = new System.Drawing.Point(627, 473);
             this.buttonSaveSettings.Name = "buttonSaveSettings";
             this.buttonSaveSettings.Size = new System.Drawing.Size(86, 22);
             this.buttonSaveSettings.TabIndex = 33;
@@ -1106,7 +1051,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(702, 473);
+            this.buttonCancel.Location = new System.Drawing.Point(720, 473);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(86, 22);
             this.buttonCancel.TabIndex = 34;
@@ -1117,134 +1062,47 @@
             // 
             this.labelSettingsSavedTime.AutoSize = true;
             this.labelSettingsSavedTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettingsSavedTime.Location = new System.Drawing.Point(607, 498);
+            this.labelSettingsSavedTime.Location = new System.Drawing.Point(625, 498);
             this.labelSettingsSavedTime.Name = "labelSettingsSavedTime";
             this.labelSettingsSavedTime.Size = new System.Drawing.Size(115, 13);
             this.labelSettingsSavedTime.TabIndex = 93;
             this.labelSettingsSavedTime.Text = "Saved Time: not saved";
             // 
-            // labelRestorePersonalNote2
+            // tabPageOld
             // 
-            this.labelRestorePersonalNote2.AutoSize = true;
-            this.labelRestorePersonalNote2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRestorePersonalNote2.Location = new System.Drawing.Point(305, 129);
-            this.labelRestorePersonalNote2.Name = "labelRestorePersonalNote2";
-            this.labelRestorePersonalNote2.Size = new System.Drawing.Size(69, 13);
-            this.labelRestorePersonalNote2.TabIndex = 105;
-            this.labelRestorePersonalNote2.Text = "Restore Own";
-            // 
-            // checkBoxRestorePersonalNote2
-            // 
-            this.checkBoxRestorePersonalNote2.AutoSize = true;
-            this.checkBoxRestorePersonalNote2.Location = new System.Drawing.Point(376, 129);
-            this.checkBoxRestorePersonalNote2.Name = "checkBoxRestorePersonalNote2";
-            this.checkBoxRestorePersonalNote2.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxRestorePersonalNote2.TabIndex = 104;
-            this.checkBoxRestorePersonalNote2.UseVisualStyleBackColor = true;
-            // 
-            // labelDontChangePersonalNote2
-            // 
-            this.labelDontChangePersonalNote2.AutoSize = true;
-            this.labelDontChangePersonalNote2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDontChangePersonalNote2.Location = new System.Drawing.Point(212, 129);
-            this.labelDontChangePersonalNote2.Name = "labelDontChangePersonalNote2";
-            this.labelDontChangePersonalNote2.Size = new System.Drawing.Size(72, 13);
-            this.labelDontChangePersonalNote2.TabIndex = 103;
-            this.labelDontChangePersonalNote2.Text = "Don\'t Change";
-            // 
-            // checkBoxDontChangePersonalNote2
-            // 
-            this.checkBoxDontChangePersonalNote2.AutoSize = true;
-            this.checkBoxDontChangePersonalNote2.Location = new System.Drawing.Point(287, 129);
-            this.checkBoxDontChangePersonalNote2.Name = "checkBoxDontChangePersonalNote2";
-            this.checkBoxDontChangePersonalNote2.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxDontChangePersonalNote2.TabIndex = 102;
-            this.checkBoxDontChangePersonalNote2.UseVisualStyleBackColor = true;
-            // 
-            // labelRestorePersonalNote3
-            // 
-            this.labelRestorePersonalNote3.AutoSize = true;
-            this.labelRestorePersonalNote3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRestorePersonalNote3.Location = new System.Drawing.Point(305, 175);
-            this.labelRestorePersonalNote3.Name = "labelRestorePersonalNote3";
-            this.labelRestorePersonalNote3.Size = new System.Drawing.Size(69, 13);
-            this.labelRestorePersonalNote3.TabIndex = 109;
-            this.labelRestorePersonalNote3.Text = "Restore Own";
-            // 
-            // checkBoxRestorePersonalNote3
-            // 
-            this.checkBoxRestorePersonalNote3.AutoSize = true;
-            this.checkBoxRestorePersonalNote3.Location = new System.Drawing.Point(376, 175);
-            this.checkBoxRestorePersonalNote3.Name = "checkBoxRestorePersonalNote3";
-            this.checkBoxRestorePersonalNote3.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxRestorePersonalNote3.TabIndex = 108;
-            this.checkBoxRestorePersonalNote3.UseVisualStyleBackColor = true;
-            // 
-            // labelDontChangePersonalNote3
-            // 
-            this.labelDontChangePersonalNote3.AutoSize = true;
-            this.labelDontChangePersonalNote3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDontChangePersonalNote3.Location = new System.Drawing.Point(212, 175);
-            this.labelDontChangePersonalNote3.Name = "labelDontChangePersonalNote3";
-            this.labelDontChangePersonalNote3.Size = new System.Drawing.Size(72, 13);
-            this.labelDontChangePersonalNote3.TabIndex = 107;
-            this.labelDontChangePersonalNote3.Text = "Don\'t Change";
-            // 
-            // checkBoxDontChangePersonalNote3
-            // 
-            this.checkBoxDontChangePersonalNote3.AutoSize = true;
-            this.checkBoxDontChangePersonalNote3.Location = new System.Drawing.Point(287, 175);
-            this.checkBoxDontChangePersonalNote3.Name = "checkBoxDontChangePersonalNote3";
-            this.checkBoxDontChangePersonalNote3.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxDontChangePersonalNote3.TabIndex = 106;
-            this.checkBoxDontChangePersonalNote3.UseVisualStyleBackColor = true;
-            // 
-            // labelRestorePersonalNote4
-            // 
-            this.labelRestorePersonalNote4.AutoSize = true;
-            this.labelRestorePersonalNote4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRestorePersonalNote4.Location = new System.Drawing.Point(306, 223);
-            this.labelRestorePersonalNote4.Name = "labelRestorePersonalNote4";
-            this.labelRestorePersonalNote4.Size = new System.Drawing.Size(69, 13);
-            this.labelRestorePersonalNote4.TabIndex = 113;
-            this.labelRestorePersonalNote4.Text = "Restore Own";
-            // 
-            // checkBoxRestorePersonalNote4
-            // 
-            this.checkBoxRestorePersonalNote4.AutoSize = true;
-            this.checkBoxRestorePersonalNote4.Location = new System.Drawing.Point(377, 223);
-            this.checkBoxRestorePersonalNote4.Name = "checkBoxRestorePersonalNote4";
-            this.checkBoxRestorePersonalNote4.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxRestorePersonalNote4.TabIndex = 112;
-            this.checkBoxRestorePersonalNote4.UseVisualStyleBackColor = true;
-            // 
-            // labelDontChangePersonalNote4
-            // 
-            this.labelDontChangePersonalNote4.AutoSize = true;
-            this.labelDontChangePersonalNote4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDontChangePersonalNote4.Location = new System.Drawing.Point(213, 223);
-            this.labelDontChangePersonalNote4.Name = "labelDontChangePersonalNote4";
-            this.labelDontChangePersonalNote4.Size = new System.Drawing.Size(72, 13);
-            this.labelDontChangePersonalNote4.TabIndex = 111;
-            this.labelDontChangePersonalNote4.Text = "Don\'t Change";
-            // 
-            // checkBoxDontChangePersonalNote4
-            // 
-            this.checkBoxDontChangePersonalNote4.AutoSize = true;
-            this.checkBoxDontChangePersonalNote4.Location = new System.Drawing.Point(288, 223);
-            this.checkBoxDontChangePersonalNote4.Name = "checkBoxDontChangePersonalNote4";
-            this.checkBoxDontChangePersonalNote4.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxDontChangePersonalNote4.TabIndex = 110;
-            this.checkBoxDontChangePersonalNote4.UseVisualStyleBackColor = true;
+            this.tabPageOld.Controls.Add(this.groupBoxEnableSkypeUI);
+            this.tabPageOld.Controls.Add(this.labelLyncUI);
+            this.tabPageOld.Controls.Add(this.textBox2);
+            this.tabPageOld.Controls.Add(this.label6);
+            this.tabPageOld.Controls.Add(this.comboBox2);
+            this.tabPageOld.Controls.Add(this.dateTimePicker3);
+            this.tabPageOld.Controls.Add(this.dateTimePicker4);
+            this.tabPageOld.Controls.Add(this.checkBox2);
+            this.tabPageOld.Controls.Add(this.label2);
+            this.tabPageOld.Controls.Add(this.label3);
+            this.tabPageOld.Controls.Add(this.label4);
+            this.tabPageOld.Controls.Add(this.textBox1);
+            this.tabPageOld.Controls.Add(this.label5);
+            this.tabPageOld.Controls.Add(this.comboBox1);
+            this.tabPageOld.Controls.Add(this.dateTimePicker1);
+            this.tabPageOld.Controls.Add(this.dateTimePicker2);
+            this.tabPageOld.Controls.Add(this.checkBox1);
+            this.tabPageOld.Controls.Add(this.label1);
+            this.tabPageOld.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOld.Name = "tabPageOld";
+            this.tabPageOld.Size = new System.Drawing.Size(792, 429);
+            this.tabPageOld.TabIndex = 2;
+            this.tabPageOld.Text = "Old";
+            this.tabPageOld.UseVisualStyleBackColor = true;
             // 
             // groupBoxEnableSkypeUI
             // 
             this.groupBoxEnableSkypeUI.Controls.Add(this.radioButtonSkypeUITrue);
             this.groupBoxEnableSkypeUI.Controls.Add(this.radioButtonSkypeUIFalse);
-            this.groupBoxEnableSkypeUI.Location = new System.Drawing.Point(369, 202);
+            this.groupBoxEnableSkypeUI.Location = new System.Drawing.Point(17, 253);
             this.groupBoxEnableSkypeUI.Name = "groupBoxEnableSkypeUI";
             this.groupBoxEnableSkypeUI.Size = new System.Drawing.Size(258, 46);
-            this.groupBoxEnableSkypeUI.TabIndex = 100;
+            this.groupBoxEnableSkypeUI.TabIndex = 118;
             this.groupBoxEnableSkypeUI.TabStop = false;
             this.groupBoxEnableSkypeUI.Text = "EnableSkypeUI";
             // 
@@ -1272,56 +1130,182 @@
             // 
             this.labelLyncUI.AutoSize = true;
             this.labelLyncUI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLyncUI.Location = new System.Drawing.Point(366, 181);
+            this.labelLyncUI.Location = new System.Drawing.Point(14, 232);
             this.labelLyncUI.Name = "labelLyncUI";
             this.labelLyncUI.Size = new System.Drawing.Size(88, 13);
-            this.labelLyncUI.TabIndex = 99;
+            this.labelLyncUI.TabIndex = 117;
             this.labelLyncUI.Text = "User Interface";
             // 
-            // labelRestorePersonalNote5
+            // textBox2
             // 
-            this.labelRestorePersonalNote5.AutoSize = true;
-            this.labelRestorePersonalNote5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRestorePersonalNote5.Location = new System.Drawing.Point(306, 269);
-            this.labelRestorePersonalNote5.Name = "labelRestorePersonalNote5";
-            this.labelRestorePersonalNote5.Size = new System.Drawing.Size(69, 13);
-            this.labelRestorePersonalNote5.TabIndex = 117;
-            this.labelRestorePersonalNote5.Text = "Restore Own";
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(208, 387);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(250, 20);
+            this.textBox2.TabIndex = 116;
+            this.textBox2.Text = "+6495005000";
             // 
-            // checkBoxRestorePersonalNote5
+            // label6
             // 
-            this.checkBoxRestorePersonalNote5.AutoSize = true;
-            this.checkBoxRestorePersonalNote5.Location = new System.Drawing.Point(377, 269);
-            this.checkBoxRestorePersonalNote5.Name = "checkBoxRestorePersonalNote5";
-            this.checkBoxRestorePersonalNote5.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxRestorePersonalNote5.TabIndex = 116;
-            this.checkBoxRestorePersonalNote5.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Enabled = false;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(594, 392);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 13);
+            this.label6.TabIndex = 115;
+            this.label6.Text = "To";
             // 
-            // labelDontChangePersonalNote5
+            // comboBox2
             // 
-            this.labelDontChangePersonalNote5.AutoSize = true;
-            this.labelDontChangePersonalNote5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDontChangePersonalNote5.Location = new System.Drawing.Point(213, 269);
-            this.labelDontChangePersonalNote5.Name = "labelDontChangePersonalNote5";
-            this.labelDontChangePersonalNote5.Size = new System.Drawing.Size(72, 13);
-            this.labelDontChangePersonalNote5.TabIndex = 115;
-            this.labelDontChangePersonalNote5.Text = "Don\'t Change";
+            this.comboBox2.Enabled = false;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(39, 386);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(150, 21);
+            this.comboBox2.TabIndex = 114;
+            this.comboBox2.Text = "Voice Mail";
             // 
-            // checkBoxDontChangePersonalNote5
+            // dateTimePicker3
             // 
-            this.checkBoxDontChangePersonalNote5.AutoSize = true;
-            this.checkBoxDontChangePersonalNote5.Location = new System.Drawing.Point(288, 269);
-            this.checkBoxDontChangePersonalNote5.Name = "checkBoxDontChangePersonalNote5";
-            this.checkBoxDontChangePersonalNote5.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxDontChangePersonalNote5.TabIndex = 114;
-            this.checkBoxDontChangePersonalNote5.UseVisualStyleBackColor = true;
+            this.dateTimePicker3.Enabled = false;
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker3.Location = new System.Drawing.Point(625, 388);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.ShowUpDown = true;
+            this.dateTimePicker3.Size = new System.Drawing.Size(109, 20);
+            this.dateTimePicker3.TabIndex = 113;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.Enabled = false;
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker4.Location = new System.Drawing.Point(476, 387);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.ShowUpDown = true;
+            this.dateTimePicker4.Size = new System.Drawing.Size(106, 20);
+            this.dateTimePicker4.TabIndex = 112;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Enabled = false;
+            this.checkBox2.Location = new System.Drawing.Point(18, 388);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2.TabIndex = 111;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Enabled = false;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(473, 343);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 110;
+            this.label2.Text = "Time Period:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Enabled = false;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(36, 342);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 109;
+            this.label3.Text = "Action:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Enabled = false;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(205, 342);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 108;
+            this.label4.Text = "Personal Note:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(208, 360);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(250, 20);
+            this.textBox1.TabIndex = 107;
+            this.textBox1.Text = "+6495005000";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Enabled = false;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(594, 365);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(20, 13);
+            this.label5.TabIndex = 106;
+            this.label5.Text = "To";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Enabled = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(39, 359);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(150, 21);
+            this.comboBox1.TabIndex = 105;
+            this.comboBox1.Text = "Number";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(625, 361);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(109, 20);
+            this.dateTimePicker1.TabIndex = 104;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Enabled = false;
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker2.Location = new System.Drawing.Point(476, 360);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowUpDown = true;
+            this.dateTimePicker2.Size = new System.Drawing.Size(106, 20);
+            this.dateTimePicker2.TabIndex = 103;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(18, 361);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 102;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Enabled = false;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 318);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 13);
+            this.label1.TabIndex = 101;
+            this.label1.Text = "Unanswered Calls";
             // 
             // SettingsBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(1025, 537);
+            this.ClientSize = new System.Drawing.Size(822, 537);
             this.Controls.Add(this.labelSettingsSavedTime);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSaveSettings);
@@ -1340,6 +1324,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsLyncSetMeAs1)).EndInit();
             this.tabPageGeneral.ResumeLayout(false);
             this.tabPageGeneral.PerformLayout();
+            this.tabPageOld.ResumeLayout(false);
+            this.tabPageOld.PerformLayout();
             this.groupBoxEnableSkypeUI.ResumeLayout(false);
             this.groupBoxEnableSkypeUI.PerformLayout();
             this.ResumeLayout(false);
@@ -1414,26 +1400,9 @@
         private System.Windows.Forms.Label labelSettingsLyncSetMeAsSeconds1;
         private System.Windows.Forms.Label labelSettingsLyncSetMeAs1;
         private System.Windows.Forms.CheckBox checkBoxSettingsLyncSetMeAs1;
-        private System.Windows.Forms.Label labelBeta;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label labelSettingsSavedTime;
         private System.Windows.Forms.CheckBox checkBoxDontChangePersonalNote1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelRestorePersonalNote1;
         private System.Windows.Forms.CheckBox checkBoxRestorePersonalNote1;
         private System.Windows.Forms.Label labelDontChangePersonalNote1;
@@ -1453,9 +1422,26 @@
         private System.Windows.Forms.CheckBox checkBoxRestorePersonalNote2;
         private System.Windows.Forms.Label labelDontChangePersonalNote2;
         private System.Windows.Forms.CheckBox checkBoxDontChangePersonalNote2;
+        private System.Windows.Forms.TabPage tabPageOld;
         private System.Windows.Forms.GroupBox groupBoxEnableSkypeUI;
         private System.Windows.Forms.RadioButton radioButtonSkypeUITrue;
         private System.Windows.Forms.RadioButton radioButtonSkypeUIFalse;
         private System.Windows.Forms.Label labelLyncUI;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

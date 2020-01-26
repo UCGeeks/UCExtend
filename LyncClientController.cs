@@ -276,6 +276,16 @@ namespace UCExtend
             }
         }
 
+        public string GetPersonalNote()
+        {
+            if (_lyncClient.State == ClientState.SignedIn)
+            {
+                return (_lyncClient.Self.Contact.GetContactInformation(ContactInformationType.PersonalNote)).ToString();
+            }
+            else
+                return null;
+        }
+
         /// <summary>
         /// Converts availability names to the coresponding Id
         /// </summary>

@@ -13,6 +13,7 @@ namespace UCExtend
 	{
         // Is the About box displayed?
         bool isAboutLoaded = false;
+        bool isVideoLoaded = false;
         bool isSettingsLoaded = false;
         static string menuIcon = Application.StartupPath + @"\Images\app_menuicon.png";
 
@@ -100,6 +101,13 @@ namespace UCExtend
                 sep = new ToolStripSeparator();
                 menu.Items.Add(sep);
 
+                //// About
+                item = new ToolStripMenuItem();
+                item.Text = "Videos";
+                item.Click += new EventHandler(Video_Click);
+                item.Image = Resources.About;
+                menu.Items.Add(item);
+
                 //Read support details from settings
                 //// About
                 item = new ToolStripMenuItem();
@@ -182,6 +190,24 @@ namespace UCExtend
                 Shared.MB("Error on click event : " + ex.Message, "ERROR!");
             }
 		}
+
+        void Video_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!isVideoLoaded)
+                {
+                    isVideoLoaded = true;
+                    new VideoPlayer().ShowDialog();
+                    isVideoLoaded = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // AAAAAAAAAAARGH, an error!
+                Shared.MB("Error on click event : " + ex.Message, "ERROR!");
+            }
+        }
 
         // Handles the Click event of the settings control
         void Settings_Click(object sender, EventArgs e)

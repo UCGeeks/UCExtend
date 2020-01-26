@@ -176,6 +176,30 @@ namespace UCExtend
             if (checkBoxPresenceSwitcherDay.Checked == true) { Settings.PsEnabled5 = "true"; }
             else { Settings.PsEnabled5 = "false"; }
 
+
+            //Presense switcher dont change personal note check boxes
+            Settings.PsDontChangePersonalNote1 = Convert.ToString(checkBoxDontChangePersonalNote1.Checked);
+            Settings.PsDontChangePersonalNote2 = Convert.ToString(checkBoxDontChangePersonalNote2.Checked);
+            Settings.PsDontChangePersonalNote3 = Convert.ToString(checkBoxDontChangePersonalNote3.Checked);
+            Settings.PsDontChangePersonalNote4 = Convert.ToString(checkBoxDontChangePersonalNote4.Checked);
+            Settings.PsDontChangePersonalNote5 = Convert.ToString(checkBoxDontChangePersonalNote5.Checked);
+
+            ////if (Settings.PsDontChangePersonalNote1 == "true") { checkBoxDontChangePersonalNote1.Checked = true; }
+            ////else { checkBoxDontChangePersonalNote1.Checked = false; }
+
+
+            //Presense switcher restore personal note check boxes
+            Settings.PsRestorePersonalNote1 = Convert.ToString(checkBoxRestorePersonalNote1.Checked);
+            Settings.PsRestorePersonalNote2 = Convert.ToString(checkBoxRestorePersonalNote2.Checked);
+            Settings.PsRestorePersonalNote3 = Convert.ToString(checkBoxRestorePersonalNote3.Checked);
+            Settings.PsRestorePersonalNote4 = Convert.ToString(checkBoxRestorePersonalNote4.Checked);
+            Settings.PsRestorePersonalNote5 = Convert.ToString(checkBoxRestorePersonalNote5.Checked);
+
+
+            //if (Settings.PsRestorePersonalNote1 == "true") { checkBoxRestorePersonalNote1.Checked = true; }
+            //else { checkBoxRestorePersonalNote1.Checked = false; }
+
+
             //From
             Settings.PsFromTime1 = dateTimePickerFromPresenceSwitcher1.Value.TimeOfDay.ToString();
             Settings.PsFromTime2 = dateTimePickerFromPresenceSwitcher2.Value.TimeOfDay.ToString();
@@ -291,28 +315,18 @@ namespace UCExtend
             else { checkBoxPresenceSwitcherDay.Checked = false; }
 
             //Presense switcher dont change personal note check boxes
-            if (Settings.PsDontChangePersonalNote1 == "true") { checkBoxDontChangePersonalNote1.Checked = true; }
-            else { checkBoxDontChangePersonalNote1.Checked = false; }
-            if (Settings.PsDontChangePersonalNote2 == "true") { checkBoxDontChangePersonalNote2.Checked = true; }
-            else { checkBoxDontChangePersonalNote2.Checked = false; }
-            if (Settings.PsDontChangePersonalNote3 == "true") { checkBoxDontChangePersonalNote3.Checked = true; }
-            else { checkBoxDontChangePersonalNote3.Checked = false; }
-            if (Settings.PsDontChangePersonalNote4 == "true") { checkBoxDontChangePersonalNote4.Checked = true; }
-            else { checkBoxDontChangePersonalNote4.Checked = false; }
-            if (Settings.PsDontChangePersonalNote5 == "true") { checkBoxDontChangePersonalNote5.Checked = true; }
-            else { checkBoxDontChangePersonalNote5.Checked = false; }
+            checkBoxDontChangePersonalNote1.Checked = Convert.ToBoolean(Settings.PsDontChangePersonalNote1);
+            checkBoxDontChangePersonalNote2.Checked = Convert.ToBoolean(Settings.PsDontChangePersonalNote2);
+            checkBoxDontChangePersonalNote3.Checked = Convert.ToBoolean(Settings.PsDontChangePersonalNote3);
+            checkBoxDontChangePersonalNote4.Checked = Convert.ToBoolean(Settings.PsDontChangePersonalNote4);
+            checkBoxDontChangePersonalNote5.Checked = Convert.ToBoolean(Settings.PsDontChangePersonalNote5);
 
             //Presense switcher restore personal note check boxes
-            if (Settings.PsRestorePersonalNote1 == "true") { checkBoxRestorePersonalNote1.Checked = true; }
-            else { checkBoxRestorePersonalNote1.Checked = false; }
-            if (Settings.PsRestorePersonalNote2 == "true") { checkBoxRestorePersonalNote2.Checked = true; }
-            else { checkBoxRestorePersonalNote2.Checked = false; }
-            if (Settings.PsRestorePersonalNote3 == "true") { checkBoxRestorePersonalNote3.Checked = true; }
-            else { checkBoxRestorePersonalNote3.Checked = false; }
-            if (Settings.PsRestorePersonalNote4 == "true") { checkBoxRestorePersonalNote4.Checked = true; }
-            else { checkBoxRestorePersonalNote4.Checked = false; }
-            if (Settings.PsRestorePersonalNote5 == "true") { checkBoxRestorePersonalNote5.Checked = true; }
-            else { checkBoxRestorePersonalNote5.Checked = false; }
+            checkBoxRestorePersonalNote1.Checked = Convert.ToBoolean(Settings.PsRestorePersonalNote1);
+            checkBoxRestorePersonalNote2.Checked = Convert.ToBoolean(Settings.PsRestorePersonalNote2);
+            checkBoxRestorePersonalNote3.Checked = Convert.ToBoolean(Settings.PsRestorePersonalNote3);
+            checkBoxRestorePersonalNote4.Checked = Convert.ToBoolean(Settings.PsRestorePersonalNote4);
+            checkBoxRestorePersonalNote5.Checked = Convert.ToBoolean(Settings.PsRestorePersonalNote5);
 
             //From
             dateTimePickerFromPresenceSwitcher1.Value = Convert.ToDateTime(Settings.PsFromTime1);
