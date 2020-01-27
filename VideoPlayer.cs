@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
+using UCExtend.Helpers;
+using UCExtend.VideoTraining;
 
 //Passing script between WinForms app and embeded browser::
 ////https://stackoverflow.com/questions/14172273/youtube-embedded-player-event-when-video-has-ended
@@ -20,113 +22,16 @@ using CefSharp.WinForms;
 //CefSharp
 ////https://www.telerik.com/support/kb/winforms/details/how-to-embed-chrome-browser-in-a-winforms-application
 ////https://ourcodeworld.com/articles/read/173/how-to-use-cefsharp-chromium-embedded-framework-csharp-in-a-winforms-application
+////https://www.codeproject.com/Articles/990346/Using-HTML-as-UI-Elements-in-a-WinForms-Applicatio
 
 namespace UCExtend
 {
-    
-
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class VideoPlayer : Form
     {
-        public VideoPlayer()
-        {
-            InitializeComponent();
-            InitBrowser();
-        }
-
-        public string html  = @"<html>
-            <head>
-            <meta content='IE=Edge' http-equiv='X-UA-Compatible'/>
-            <script>function popWebMessageBox(message) { alert(message); }</script>
-            </head>
-  <body>
-<button onclick = ""window.external.PopWinFormsMessageBox('Called from the embeded webpage!')"" > call client code from script code</button>
-  <iframe id=""existing - iframe - example""
-        width = ""640"" height = ""360""
-        src = ""https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1""
-        frameborder = ""0""
-        style = ""border: solid 4px #37474F"" ></ iframe >
-    < script>
-        window.onerror = function(message, url, lineNumber) 
-        { 
-          window.external.errorHandler(message, url, lineNumber);
-        }
-        var tag = document.createElement('script');
-            tag.id = 'iframe-demo';
-            tag.src = 'https://www.youtube.com/iframe_api';
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-            var player;
-            function onYouTubeIframeAPIReady()
-            {
-                player = new YT.Player('existing-iframe-example', {
-        events: {
-                'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-        });
-  }
-    function onPlayerReady(event)
-    {
-        document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
-    }
-    function changeBorderColor(playerStatus)
-    {
-        var color;
-        if (playerStatus == -1)
-        {
-            color = ""#37474F""; // unstarted = gray
-        }
-        else if (playerStatus == 0)
-        {
-            color = ""#FFFF00""; // ended = yellow
-        }
-        else if (playerStatus == 1)
-        {
-            color = ""#33691E""; // playing = green
-        }
-        else if (playerStatus == 2)
-        {
-            color = ""#DD2C00""; // paused = red
-        }
-        else if (playerStatus == 3)
-        {
-            color = ""#AA00FF""; // buffering = purple
-        }
-        else if (playerStatus == 5)
-        {
-            color = ""#FF6DOO""; // video cued = orange
-        }
-        if (color)
-        {
-            document.getElementById('existing-iframe-example').style.borderColor = color;
-        }
-    }
-    function onPlayerStateChange(event)
-    {
-        changeBorderColor(event.data);
-    }
-</script>
-  </body>
-</html>";
-        public ChromiumWebBrowser browser;
-
-        public void InitBrowser()
-        {
-            Cef.Initialize(new CefSettings());
-            ChromiumWebBrowser browser = new ChromiumWebBrowser(string.Empty)
-            {
-                Location = new Point(0, 0),
-                Dock = DockStyle.Fill
-            };
-            this.Controls.Add(browser);
-            browser.LoadHtml(ScriptReader("YouTubeEmbed.html"));
-        }
-
-
         private readonly string[] resourceFiles = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+        public ChromiumWebBrowser browser;
 
         //Video settings
         public static string settingsFolderBase = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\" + Application.CompanyName + @"\" + Application.ProductName;
@@ -138,6 +43,67 @@ namespace UCExtend
         //List<List<string>> videoWatchlist = new List<List<string>>();
         List<string> videoPlaylist = new List<string>();
         List<string> videoWatchlist = new List<string>();
+
+        public VideoPlayer()
+        {
+            InitializeComponent();
+            InitBrowser();
+        }
+
+        private void VideoPlayer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Cef.Shutdown();
+        }
+
+        public void VideoPlayer_Load(object sender, EventArgs e)
+        {
+            if (File.Exists(pathVideoPlaylist))
+            {
+                var lines = System.IO.File.ReadAllLines(pathVideoPlaylist);
+                foreach (var line in lines)
+                {
+                    var split = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                    //videoPlaylist.Add(split.ToList());
+                    videoPlaylist.Add(line);
+                }
+                comboBox1.DataSource = videoPlaylist;
+                //comboBox1.DisplayMember = 
+
+                if (File.Exists(pathVideoPlayWatchList))
+                {
+                    lines = System.IO.File.ReadAllLines(pathVideoPlayWatchList);
+                    foreach (var line in lines)
+                    {
+                        var split = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                        //videoWatchlist.Add(split.ToList());
+                        videoWatchlist.Add(line);
+                    }
+                }
+                else
+                {
+                    File.Create(pathVideoPlayWatchList);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No video playlist found!");
+            }
+        }
+
+        public void InitBrowser()
+        {
+            Cef.Initialize(new CefSettings());
+            CefSharpSettings.LegacyJavascriptBindingEnabled = true;
+            browser = new ChromiumWebBrowser(string.Empty)
+            {
+                Location = new Point(0, 0),
+                Dock = DockStyle.Fill
+            };
+            this.Controls.Add(browser);
+            ChromeDevToolsSystemMenu.CreateSysMenu(this);
+            browser.RegisterJsObject("winformObj", new JsInteractionHandler());
+            browser.LoadHtml(ScriptReader("YouTubeEmbed.html"));
+        }
 
         public void btnGo_Click(object sender, EventArgs e)
         {
@@ -233,41 +199,6 @@ namespace UCExtend
 
         }
 
-        public void VideoPlayer_Load(object sender, EventArgs e)
-        {
-            if (File.Exists(pathVideoPlaylist))
-            {
-                var lines = System.IO.File.ReadAllLines(pathVideoPlaylist);
-                foreach (var line in lines)
-                {
-                    var split = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                    //videoPlaylist.Add(split.ToList());
-                    videoPlaylist.Add(line);
-                }
-                comboBox1.DataSource = videoPlaylist;
-                //comboBox1.DisplayMember = 
-
-                if (File.Exists(pathVideoPlayWatchList))
-                {
-                    lines = System.IO.File.ReadAllLines(pathVideoPlayWatchList);
-                    foreach (var line in lines)
-                    {
-                        var split = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                        //videoWatchlist.Add(split.ToList());
-                        videoWatchlist.Add(line);
-                    }
-                }
-                else
-                {
-                    File.Create(pathVideoPlayWatchList);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No video playlist found!");
-            }
-        }
-
         //This WinForms button when clicked invokes a script in the embeded webpages "popWebMessageBox" function that pops a message box
         public void button1_Click(object sender, EventArgs e)
         {
@@ -309,7 +240,31 @@ namespace UCExtend
             }
         }
 
+        private void btnDevTools_Click(object sender, EventArgs e)
+        {
+           browser.ShowDevTools();
+        }
+
+        //Dev tools menu option overide
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            // Test if the About item was selected from the system menu
+            if ((m.Msg == ChromeDevToolsSystemMenu.WM_SYSCOMMAND) && ((int)m.WParam == ChromeDevToolsSystemMenu.SYSMENU_CHROME_DEV_TOOLS))
+            {
+                browser.ShowDevTools();
+            }
+        }
+
+        private void btnCtoJ_Click(object sender, EventArgs e)
+        {
+                var script = "document.body.style.backgroundColor = 'red';";
+                browser.ExecuteScriptAsync(script);
+        }
     }
+
+   
 }
 
 

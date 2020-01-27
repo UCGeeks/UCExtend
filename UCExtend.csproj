@@ -94,6 +94,8 @@
     </Compile>
     <Compile Include="Configurator.cs" />
     <Compile Include="ContextMenus.cs" />
+    <Compile Include="Helpers\ChromeDevToolsSystemMenu.cs" />
+    <Compile Include="VideoTraining\JavaScriptInteractionObjEXAMPLE.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="Lync.cs" />
     <Compile Include="LyncClientController.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="VideoPlayer.Designer.cs">
       <DependentUpon>VideoPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="VideoTraining\JsInteractionHandler.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,7 +223,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

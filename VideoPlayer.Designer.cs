@@ -31,7 +31,7 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.btnGo = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCtoJ = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -50,7 +50,7 @@
             // 
             this.btnGo.Location = new System.Drawing.Point(707, 9);
             this.btnGo.Name = "btnGo";
-            this.btnGo.Size = new System.Drawing.Size(75, 23);
+            this.btnGo.Size = new System.Drawing.Size(37, 23);
             this.btnGo.TabIndex = 1;
             this.btnGo.Text = "Go!";
             this.btnGo.UseVisualStyleBackColor = true;
@@ -64,27 +64,28 @@
             this.comboBox1.Size = new System.Drawing.Size(701, 21);
             this.comboBox1.TabIndex = 3;
             // 
-            // button1
+            // btnCtoJ
             // 
-            this.button1.Location = new System.Drawing.Point(810, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCtoJ.Location = new System.Drawing.Point(916, 12);
+            this.btnCtoJ.Name = "btnCtoJ";
+            this.btnCtoJ.Size = new System.Drawing.Size(56, 23);
+            this.btnCtoJ.TabIndex = 5;
+            this.btnCtoJ.Text = "C#->JS";
+            this.btnCtoJ.UseVisualStyleBackColor = true;
+            this.btnCtoJ.Click += new System.EventHandler(this.btnCtoJ_Click);
             // 
             // VideoPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 711);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCtoJ);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.webBrowser1);
             this.Name = "VideoPlayer";
             this.Text = "VideoPlayer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VideoPlayer_FormClosing);
             this.Load += new System.EventHandler(this.VideoPlayer_Load);
             this.ResumeLayout(false);
 
@@ -95,6 +96,6 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCtoJ;
     }
 }
