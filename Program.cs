@@ -162,6 +162,10 @@ namespace UCExtend
             settingsBox.lync = lyncClientController;
             //settingsBox.ShowDialog();
 
+            #if DEBUG
+                new VideoPlayer().ShowDialog();
+            #endif
+
             // Show the system tray icon.					
             //using (ProcessIcon pi = new ProcessIcon())
             using (ProcessIcon pi = new ProcessIcon())
@@ -175,8 +179,11 @@ namespace UCExtend
                 pi.Display();
 
                 // Make sure the application runs!
-                Application.Run();
-            } 
+                Application.Run();                
+            }
+
+            
+            
         }
 	}    
 }

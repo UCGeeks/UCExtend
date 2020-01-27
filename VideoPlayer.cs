@@ -93,7 +93,7 @@ namespace UCExtend
         public void InitBrowser()
         {
             Cef.Initialize(new CefSettings());
-            CefSharpSettings.LegacyJavascriptBindingEnabled = true;
+            CefSharpSettings.LegacyJavascriptBindingEnabled = true; //Need to figure out new way - https://github.com/cefsharp/CefSharp/issues/2246
             browser = new ChromiumWebBrowser(string.Empty)
             {
                 Location = new Point(0, 0),
@@ -102,99 +102,109 @@ namespace UCExtend
             this.Controls.Add(browser);
             ChromeDevToolsSystemMenu.CreateSysMenu(this);
             browser.RegisterJsObject("winformObj", new JsInteractionHandler());
-            browser.LoadHtml(ScriptReader("YouTubeEmbed.html"));
+            LoadHtml("Z25ibgtwQa0");
+
+
+        }
+
+        public void LoadHtml(string VideoId)
+        {
+            string html = ScriptReader("YouTubeEmbed.html");
+            var htmlFormated = html.Replace("**VideoId**", VideoId);
+            browser.LoadHtml(htmlFormated);
         }
 
         public void btnGo_Click(object sender, EventArgs e)
         {
             var selectedVideo = comboBox1.SelectedValue.ToString();
             var selectedVideoId = selectedVideo.Split('=')[1];
+            LoadHtml(selectedVideoId);
 
-            webBrowser1.AllowWebBrowserDrop = false;
-            webBrowser1.IsWebBrowserContextMenuEnabled = false;
-            webBrowser1.WebBrowserShortcutsEnabled = false;
-            webBrowser1.ObjectForScripting = this;
-            //webBrowser1.ObjectForScripting = new ScriptInterface();
-            // Uncomment the following line when you are finished debugging.
-            //webBrowser1.ScriptErrorsSuppressed = true;
+//            webBrowser1.AllowWebBrowserDrop = false;
+//            webBrowser1.IsWebBrowserContextMenuEnabled = false;
+//            webBrowser1.WebBrowserShortcutsEnabled = false;
+//            webBrowser1.ObjectForScripting = this;
+//            //webBrowser1.ObjectForScripting = new ScriptInterface();
+//            // Uncomment the following line when you are finished debugging.
+//            //webBrowser1.ScriptErrorsSuppressed = true;
 
-            var html = ScriptReader("YouTubeEmbed.html");
-            webBrowser1.DocumentText = @"<html>
-            <head>
-            <meta content='IE=Edge' http-equiv='X-UA-Compatible'/>
-            <script>function popWebMessageBox(message) { alert(message); }</script>
-            </head>
-  <body>
-<button onclick = ""window.external.PopWinFormsMessageBox('Called from the embeded webpage!')"" > call client code from script code</button>
-  <iframe id=""existing - iframe - example""
-        width = ""640"" height = ""360""
-        src = ""https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1""
-        frameborder = ""0""
-        style = ""border: solid 4px #37474F"" ></ iframe >
-    < script>
-        window.onerror = function(message, url, lineNumber) 
-        { 
-          window.external.errorHandler(message, url, lineNumber);
-        }
-        var tag = document.createElement('script');
-            tag.id = 'iframe-demo';
-            tag.src = 'https://www.youtube.com/iframe_api';
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            //            var html = ScriptReader("YouTubeEmbed.html");
+            //            webBrowser1.DocumentText = @"<html>
+            //            <head>
+            //            <meta content='IE=Edge' http-equiv='X-UA-Compatible'/>
+            //            <script>function popWebMessageBox(message) { alert(message); }</script>
+            //            </head>
+            //  <body>
+            //<button onclick = ""window.external.PopWinFormsMessageBox('Called from the embeded webpage!')"" > call client code from script code</button>
+            //  <iframe id=""existing - iframe - example""
+            //        width = ""640"" height = ""360""
+            //        src = ""https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1""
+            //        frameborder = ""0""
+            //        style = ""border: solid 4px #37474F"" ></ iframe >
+            //    < script>
+            //        window.onerror = function(message, url, lineNumber) 
+            //        { 
+            //          window.external.errorHandler(message, url, lineNumber);
+            //        }
+            //        var tag = document.createElement('script');
+            //            tag.id = 'iframe-demo';
+            //            tag.src = 'https://www.youtube.com/iframe_api';
+            //            var firstScriptTag = document.getElementsByTagName('script')[0];
+            //            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-            var player;
-            function onYouTubeIframeAPIReady()
-            {
-                player = new YT.Player('existing-iframe-example', {
-        events: {
-                'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-        });
-  }
-    function onPlayerReady(event)
-    {
-        document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
-    }
-    function changeBorderColor(playerStatus)
-    {
-        var color;
-        if (playerStatus == -1)
-        {
-            color = ""#37474F""; // unstarted = gray
-        }
-        else if (playerStatus == 0)
-        {
-            color = ""#FFFF00""; // ended = yellow
-        }
-        else if (playerStatus == 1)
-        {
-            color = ""#33691E""; // playing = green
-        }
-        else if (playerStatus == 2)
-        {
-            color = ""#DD2C00""; // paused = red
-        }
-        else if (playerStatus == 3)
-        {
-            color = ""#AA00FF""; // buffering = purple
-        }
-        else if (playerStatus == 5)
-        {
-            color = ""#FF6DOO""; // video cued = orange
-        }
-        if (color)
-        {
-            document.getElementById('existing-iframe-example').style.borderColor = color;
-        }
-    }
-    function onPlayerStateChange(event)
-    {
-        changeBorderColor(event.data);
-    }
-</script>
-  </body>
-</html>";
+            //            var player;
+            //            function onYouTubeIframeAPIReady()
+            //            {
+            //                player = new YT.Player('existing-iframe-example', {
+            //        events: {
+            //                'onReady': onPlayerReady,
+            //          'onStateChange': onPlayerStateChange
+            //        }
+            //        });
+            //  }
+            //    function onPlayerReady(event)
+            //    {
+            //        document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
+            //    }
+            //    function changeBorderColor(playerStatus)
+            //    {
+            //        var color;
+            //        if (playerStatus == -1)
+            //        {
+            //            color = ""#37474F""; // unstarted = gray
+            //        }
+            //        else if (playerStatus == 0)
+            //        {
+            //            color = ""#FFFF00""; // ended = yellow
+            //        }
+            //        else if (playerStatus == 1)
+            //        {
+            //            color = ""#33691E""; // playing = green
+            //        }
+            //        else if (playerStatus == 2)
+            //        {
+            //            color = ""#DD2C00""; // paused = red
+            //        }
+            //        else if (playerStatus == 3)
+            //        {
+            //            color = ""#AA00FF""; // buffering = purple
+            //        }
+            //        else if (playerStatus == 5)
+            //        {
+            //            color = ""#FF6DOO""; // video cued = orange
+            //        }
+            //        if (color)
+            //        {
+            //            document.getElementById('existing-iframe-example').style.borderColor = color;
+            //        }
+            //    }
+            //    function onPlayerStateChange(event)
+            //    {
+            //        changeBorderColor(event.data);
+            //    }
+            //</script>
+            //  </body>
+            //</html>";
 
 
         }
@@ -202,8 +212,8 @@ namespace UCExtend
         //This WinForms button when clicked invokes a script in the embeded webpages "popWebMessageBox" function that pops a message box
         public void button1_Click(object sender, EventArgs e)
         {
-            webBrowser1.Document.InvokeScript("popWebMessageBox",
-            new String[] { "Called from WinForms app!" });
+            //webBrowser1.Document.InvokeScript("popWebMessageBox",
+            //new String[] { "Called from WinForms app!" });
         }
 
         //The script code in the embeded web page calls this method using "onclick=\"window.external.PopWinFormsMessageBox('Called from the embeded webpage!')\">" 
