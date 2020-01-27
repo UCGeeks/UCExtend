@@ -39,10 +39,10 @@
             this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(0, 38);
+            this.webBrowser1.Location = new System.Drawing.Point(0, 531);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 40);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(984, 673);
+            this.webBrowser1.Size = new System.Drawing.Size(984, 180);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             // 

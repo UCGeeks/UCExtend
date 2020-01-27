@@ -5,18 +5,26 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CefSharp;
+using CefSharp.WinForms;
 
 //Passing script between WinForms app and embeded browser::
 ////https://stackoverflow.com/questions/14172273/youtube-embedded-player-event-when-video-has-ended
 ////https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/implement-two-way-com-between-dhtml-and-client?redirectedfrom=MSDN
 ////https://www.htmlgoodies.com/beyond/video/respond-to-embedded-youtube-video-events.html
+//CefSharp
+////https://www.telerik.com/support/kb/winforms/details/how-to-embed-chrome-browser-in-a-winforms-application
+////https://ourcodeworld.com/articles/read/173/how-to-use-cefsharp-chromium-embedded-framework-csharp-in-a-winforms-application
 
 namespace UCExtend
 {
+    
+
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class VideoPlayer : Form
@@ -24,7 +32,101 @@ namespace UCExtend
         public VideoPlayer()
         {
             InitializeComponent();
+            InitBrowser();
         }
+
+        public string html  = @"<html>
+            <head>
+            <meta content='IE=Edge' http-equiv='X-UA-Compatible'/>
+            <script>function popWebMessageBox(message) { alert(message); }</script>
+            </head>
+  <body>
+<button onclick = ""window.external.PopWinFormsMessageBox('Called from the embeded webpage!')"" > call client code from script code</button>
+  <iframe id=""existing - iframe - example""
+        width = ""640"" height = ""360""
+        src = ""https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1""
+        frameborder = ""0""
+        style = ""border: solid 4px #37474F"" ></ iframe >
+    < script>
+        window.onerror = function(message, url, lineNumber) 
+        { 
+          window.external.errorHandler(message, url, lineNumber);
+        }
+        var tag = document.createElement('script');
+            tag.id = 'iframe-demo';
+            tag.src = 'https://www.youtube.com/iframe_api';
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            var player;
+            function onYouTubeIframeAPIReady()
+            {
+                player = new YT.Player('existing-iframe-example', {
+        events: {
+                'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+        });
+  }
+    function onPlayerReady(event)
+    {
+        document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
+    }
+    function changeBorderColor(playerStatus)
+    {
+        var color;
+        if (playerStatus == -1)
+        {
+            color = ""#37474F""; // unstarted = gray
+        }
+        else if (playerStatus == 0)
+        {
+            color = ""#FFFF00""; // ended = yellow
+        }
+        else if (playerStatus == 1)
+        {
+            color = ""#33691E""; // playing = green
+        }
+        else if (playerStatus == 2)
+        {
+            color = ""#DD2C00""; // paused = red
+        }
+        else if (playerStatus == 3)
+        {
+            color = ""#AA00FF""; // buffering = purple
+        }
+        else if (playerStatus == 5)
+        {
+            color = ""#FF6DOO""; // video cued = orange
+        }
+        if (color)
+        {
+            document.getElementById('existing-iframe-example').style.borderColor = color;
+        }
+    }
+    function onPlayerStateChange(event)
+    {
+        changeBorderColor(event.data);
+    }
+</script>
+  </body>
+</html>";
+        public ChromiumWebBrowser browser;
+
+        public void InitBrowser()
+        {
+            Cef.Initialize(new CefSettings());
+            ChromiumWebBrowser browser = new ChromiumWebBrowser(string.Empty)
+            {
+                Location = new Point(0, 0),
+                Dock = DockStyle.Fill
+            };
+            this.Controls.Add(browser);
+            browser.LoadHtml(ScriptReader("YouTubeEmbed.html"));
+        }
+
+
+        private readonly string[] resourceFiles = Assembly.GetExecutingAssembly().GetManifestResourceNames();
 
         //Video settings
         public static string settingsFolderBase = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\" + Application.CompanyName + @"\" + Application.ProductName;
@@ -46,42 +148,88 @@ namespace UCExtend
             webBrowser1.IsWebBrowserContextMenuEnabled = false;
             webBrowser1.WebBrowserShortcutsEnabled = false;
             webBrowser1.ObjectForScripting = this;
+            //webBrowser1.ObjectForScripting = new ScriptInterface();
             // Uncomment the following line when you are finished debugging.
             //webBrowser1.ScriptErrorsSuppressed = true;
 
-           
-            webBrowser1.DocumentText =
-            @"<html>
+            var html = ScriptReader("YouTubeEmbed.html");
+            webBrowser1.DocumentText = @"<html>
             <head>
             <meta content='IE=Edge' http-equiv='X-UA-Compatible'/>
             <script>function popWebMessageBox(message) { alert(message); }</script>
             </head>
-            <body>
-            <script type = 'text/javascript' src='http://www.youtube.com/player_api'></script>
-            <iframe id='video' src='http://www.youtube.com/embed/Z25ibgtwQa0?autoplay=1&controls=1&enablejsapi=1' width='100%' height='650' frameborder='0' allowfullscreen='allowfullscreen'></iframe>
-            <script type = 'text/javascript' >
+  <body>
+<button onclick = ""window.external.PopWinFormsMessageBox('Called from the embeded webpage!')"" > call client code from script code</button>
+  <iframe id=""existing - iframe - example""
+        width = ""640"" height = ""360""
+        src = ""https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1""
+        frameborder = ""0""
+        style = ""border: solid 4px #37474F"" ></ iframe >
+    < script>
+        window.onerror = function(message, url, lineNumber) 
+        { 
+          window.external.errorHandler(message, url, lineNumber);
+        }
+        var tag = document.createElement('script');
+            tag.id = 'iframe-demo';
+            tag.src = 'https://www.youtube.com/iframe_api';
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
             var player;
             function onYouTubeIframeAPIReady()
             {
-                alert('test 1');
-                player = new YT.Player('player', 
-                {
-                    videoId: 'VIDEO_ID', events: 
-                    {
-                        'onStateChange': function(evt)
-                        {
-                            if (evt.data == 0)
-                            {
-                                
-                                alert('test 2');
-                                window.external.PopWinFormsMessageBox('Video finished!!');
-                            }
-                        }
-                    }
-                });
-            }
-            </script>
-            </body></html>";
+                player = new YT.Player('existing-iframe-example', {
+        events: {
+                'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+        });
+  }
+    function onPlayerReady(event)
+    {
+        document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
+    }
+    function changeBorderColor(playerStatus)
+    {
+        var color;
+        if (playerStatus == -1)
+        {
+            color = ""#37474F""; // unstarted = gray
+        }
+        else if (playerStatus == 0)
+        {
+            color = ""#FFFF00""; // ended = yellow
+        }
+        else if (playerStatus == 1)
+        {
+            color = ""#33691E""; // playing = green
+        }
+        else if (playerStatus == 2)
+        {
+            color = ""#DD2C00""; // paused = red
+        }
+        else if (playerStatus == 3)
+        {
+            color = ""#AA00FF""; // buffering = purple
+        }
+        else if (playerStatus == 5)
+        {
+            color = ""#FF6DOO""; // video cued = orange
+        }
+        if (color)
+        {
+            document.getElementById('existing-iframe-example').style.borderColor = color;
+        }
+    }
+    function onPlayerStateChange(event)
+    {
+        changeBorderColor(event.data);
+    }
+</script>
+  </body>
+</html>";
+
 
         }
 
@@ -132,10 +280,73 @@ namespace UCExtend
         {
             MessageBox.Show(message, "WinForms Message Box");
         }
+
+        private string ScriptReader(string fileName)
+        {
+            string script = null;
+            string resourcePath = "UCExtend.HTML." + fileName;
+
+            if (resourceFiles.Contains(resourcePath))
+            {
+                //Resource resource file as preference
+                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcePath))
+
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    script = reader.ReadToEnd();
+                }
+            }
+
+            return script;
+        }
+
+        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        public class ScriptInterface
+        {
+            void errorHandler(string message, string url, string lineNumber)
+            {
+                MessageBox.Show(string.Format("Message: {0}, URL: {1}, Line: {2}"));
+            }
+        }
+
     }
 }
 
 
+
+
+//webBrowser1.DocumentText =
+//            @"<html>
+//            <head>
+//            <meta content='IE=Edge' http-equiv='X-UA-Compatible'/>
+//            <script>function popWebMessageBox(message) { alert(message); }</script>
+//            </head>
+//            <body>
+//            <script type = 'text/javascript' src='http://www.youtube.com/player_api'></script>
+//            <iframe id='video' src='http://www.youtube.com/embed/Z25ibgtwQa0?autoplay=1&controls=1&enablejsapi=1' width='100%' height='650' frameborder='0' allowfullscreen='allowfullscreen'></iframe>
+//            <script type = 'text/javascript' >
+//            var player;
+//            function onYouTubeIframeAPIReady()
+//            {
+//                alert('test 1');
+//                player = new YT.Player('player', 
+//                {
+//                    videoId: 'VIDEO_ID', events: 
+//                    {
+//                        'onStateChange': function(evt)
+//                        {
+//                            if (evt.data == 0)
+//                            {
+                                
+//                                alert('test 2');
+//                                window.external.PopWinFormsMessageBox('Video finished!!');
+//                            }
+//                        }
+//                    }
+//                });
+//            }
+//            </script>
+//            </body></html>";
 
 //string html = "<html><head>";
 //html += "<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>";

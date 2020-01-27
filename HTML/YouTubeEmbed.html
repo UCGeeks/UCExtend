@@ -29,6 +29,7 @@
         // 4. The API will call this function when the video player is ready.
         function onPlayerReady(event) {
             document.getElementById('ik_player_iframe').style.borderColor = '#FF6D00';
+            window.external.PopWinFormsMessageBox('Video finished!!');
             event.target.playVideo();
         }
 
@@ -45,6 +46,7 @@
                     break;
                 case YT.PlayerState.ENDED:
                     console.log('ended');
+                    window.external.PopWinFormsMessageBox('Video finished!!');
                     break;
                 case YT.PlayerState.PLAYING:
                     console.log('playing');
