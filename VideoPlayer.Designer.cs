@@ -31,6 +31,7 @@
             this.btnGo = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnCtoJ = new System.Windows.Forms.Button();
+            this.panelVideo = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // btnGo
@@ -61,11 +62,26 @@
             this.btnCtoJ.UseVisualStyleBackColor = true;
             this.btnCtoJ.Click += new System.EventHandler(this.btnCtoJ_Click);
             // 
+            // panelVideo
+            // 
+            this.panelVideo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelVideo.AutoScroll = true;
+            this.panelVideo.BackColor = System.Drawing.SystemColors.Window;
+            this.panelVideo.Location = new System.Drawing.Point(12, 38);
+            this.panelVideo.Name = "panelVideo";
+            this.panelVideo.Size = new System.Drawing.Size(960, 620);
+            this.panelVideo.TabIndex = 6;
+            // 
             // VideoPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 711);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(984, 673);
+            this.Controls.Add(this.panelVideo);
             this.Controls.Add(this.btnCtoJ);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnGo);
@@ -81,5 +97,6 @@
         private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnCtoJ;
+        private System.Windows.Forms.Panel panelVideo;
     }
 }

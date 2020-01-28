@@ -99,10 +99,11 @@ namespace UCExtend
                 Location = new Point(0, 0),
                 Dock = DockStyle.Fill
             };
-            this.Controls.Add(browser);
+            //this.Controls.Add(browser);
+            panelVideo.Controls.Add(browser);
             ChromeDevToolsSystemMenu.CreateSysMenu(this);
             browser.RegisterJsObject("winformObj", new JsInteractionHandler());
-            LoadHtml("Z25ibgtwQa0");
+            //LoadHtml("Z25ibgtwQa0");
 
 
         }
@@ -269,8 +270,9 @@ namespace UCExtend
 
         private void btnCtoJ_Click(object sender, EventArgs e)
         {
-                var script = "document.body.style.backgroundColor = 'red';";
-                browser.ExecuteScriptAsync(script);
+            //var script = "document.body.style.backgroundColor = 'red';";
+            var script = "playFullscreen();";//"document.body.playFullscreen()";
+            browser.ExecuteScriptAsync(script);
         }
     }
 
