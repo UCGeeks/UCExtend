@@ -33,17 +33,6 @@ namespace UCExtend
         private readonly string[] resourceFiles = Assembly.GetExecutingAssembly().GetManifestResourceNames();
         public ChromiumWebBrowser browser;
 
-        //Video settings
-        public static string settingsFolderBase = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\" + Application.CompanyName + @"\" + Application.ProductName;
-        public static string pathVideoPlaylist = settingsFolderBase + @"\VideoPlayList.txt";
-        public static string pathVideoPlayWatchList = settingsFolderBase + @"\VideoWatchList.txt";
-        //static string settingsTemplateFilePath = Application.StartupPath + @"\SettingsTemplate.xml";
-
-        //List<List<string>> videoPlaylist = new List<List<string>>();
-        //List<List<string>> videoWatchlist = new List<List<string>>();
-        List<string> videoPlaylist = new List<string>();
-        List<string> videoWatchlist = new List<string>();
-
         public VideoPlayer()
         {
             InitializeComponent();
@@ -57,37 +46,8 @@ namespace UCExtend
 
         public void VideoPlayer_Load(object sender, EventArgs e)
         {
-            if (File.Exists(pathVideoPlaylist))
-            {
-                var lines = System.IO.File.ReadAllLines(pathVideoPlaylist);
-                foreach (var line in lines)
-                {
-                    var split = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                    //videoPlaylist.Add(split.ToList());
-                    videoPlaylist.Add(line);
-                }
-                comboBox1.DataSource = videoPlaylist;
-                //comboBox1.DisplayMember = 
-
-                if (File.Exists(pathVideoPlayWatchList))
-                {
-                    lines = System.IO.File.ReadAllLines(pathVideoPlayWatchList);
-                    foreach (var line in lines)
-                    {
-                        var split = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                        //videoWatchlist.Add(split.ToList());
-                        videoWatchlist.Add(line);
-                    }
-                }
-                else
-                {
-                    File.Create(pathVideoPlayWatchList);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No video playlist found!");
-            }
+            DataFactory.LoadData();
+            comboBox1.DataSource = DataFactory.GetPlayList();
         }
 
         public void InitBrowser()

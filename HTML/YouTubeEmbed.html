@@ -7,7 +7,7 @@
     <!--<script type='text/javascript' src='http://www.youtube.com/player_api'></script>
     <button type="button" onclick="test1()">ShowWinFormsMessageBox</button>-->
     <script src="https://www.youtube.com/iframe_api"></script>
-    <!--<button>play fullscreen</button><br>-->
+    <button>play fullscreen</button><br>
     <div id="player" style='border: solid 0px'></div> <!--style='border: solid 5px #37474F'-->
     <!--<iframe id="player" src='http://www.youtube.com/embed/**VideoId**?enablejsapi=1' width='100%' height='100%' frameborder='0' allowfullscreen='allowfullscreen' style='border: solid 10px #37474F'></iframe>-->
     <script type='text/javascript'>
@@ -21,13 +21,13 @@
 
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
-        var player;
+        //var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '98%',
                 width: '100%',
                 videoId: '**VideoId**',
-                playerVars: { 'autoplay': 1, 'controls': 1 },
+                playerVars: { 'autoplay': 1, 'controls': 0 },
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -40,8 +40,8 @@
             //document.getElementById('player').style.borderColor = '#FF6D00';
             //window.external.PopWinFormsMessageBox('Video finished!!'); //Old using native WebBrowser embed
             //winformObj.showWinFormsMessageBox("Player Ready");
-            //event.target.playVideo();
-            var player = event.target;
+            event.target.playVideo();
+            //var player = event.target;
             iframe = $('#player');
             setupListener();
         }
@@ -50,14 +50,23 @@
             $('button').addEventListener('click', playFullscreen);
         }
 
-        function playFullscreen() {
-            winformObj.showWinFormsMessageBox("playFullscreen");
-            player.playVideo();//won't work on mobile
+        function fncTest() {
+            document.body.style.backgroundColor = 'red';
+            winformObj.showWinFormsMessageBox("fncTest!!!");
+            console.log("fncTest!!!");
+        }
 
-            var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
-            if (requestFullScreen) {
-                requestFullScreen.bind(iframe)();
-            }
+        function playFullscreen() {
+            //winformObj.showWinFormsMessageBox("playFullscreen!!!");
+            fncTest();
+            
+            //player.pauseVideo();
+            player.playVideo(); //won't work on mobile
+            //player.seekTo(10);
+            //var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
+            //if (requestFullScreen) {
+            //    requestFullScreen.bind(iframe)();
+            //}
         }
 
         function stopVideo() {

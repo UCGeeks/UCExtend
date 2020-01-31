@@ -95,6 +95,7 @@
     <Compile Include="Configurator.cs" />
     <Compile Include="ContextMenus.cs" />
     <Compile Include="Helpers\ChromeDevToolsSystemMenu.cs" />
+    <Compile Include="VideoTraining\DataFactory.cs" />
     <Compile Include="VideoTraining\JavaScriptInteractionObjEXAMPLE.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="Lync.cs" />
@@ -130,6 +131,7 @@
       <DependentUpon>VideoPlayer.cs</DependentUpon>
     </Compile>
     <Compile Include="VideoTraining\JsInteractionHandler.cs" />
+    <Compile Include="VideoTraining\Video.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
