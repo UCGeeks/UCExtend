@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Microsoft.Win32;
 using SingleInstanceClassLibrary;
+using UCExtend.VideoTraining;
 
 namespace UCExtend
 {
@@ -162,9 +163,12 @@ namespace UCExtend
             settingsBox.lync = lyncClientController;
             //settingsBox.ShowDialog();
 
-            #if DEBUG
-                new VideoPlayer().ShowDialog();
-            #endif
+ #if DEBUG
+//new VideoPlayer().ShowDialog();
+#endif
+
+            //Video offer service
+            var videoOfferService = new VideoOfferService();
 
             // Show the system tray icon.					
             //using (ProcessIcon pi = new ProcessIcon())

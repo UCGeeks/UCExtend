@@ -1,5 +1,8 @@
-﻿using System;
+﻿using LiteDB;
+using LiteDB.Engine;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -12,6 +15,7 @@ namespace UCExtend.VideoTraining
         public static string settingsFolderBase = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\" + Application.CompanyName + @"\" + Application.ProductName;
         public static string pathVideoPlaylist = settingsFolderBase + @"\VideoPlayList.txt";
         public static string pathVideoPlayWatchList = settingsFolderBase + @"\VideoWatchList.txt";
+        public static string liteDBPath = settingsFolderBase + @"\VideoPlayList.db";
 
         public static List<Video> LoadData()
         {
@@ -50,9 +54,7 @@ namespace UCExtend.VideoTraining
             {
                 //MessageBox.Show("No video playlist found!");
             }
-
             return videoPlaylist;
-
         }
 
         public static List<string> GetPlayWatchList()
@@ -72,8 +74,71 @@ namespace UCExtend.VideoTraining
             {
                 File.Create(pathVideoPlayWatchList);
             }
-
             return videoWatchlist;
+        }
+
+        //LiteDB
+        //https://www.c-sharpcorner.com/UploadFile/ranjancse/getting-started-with-litedb/
+        public static void Add(Video issue)
+        {
+            // Open data file (or create if not exits)  
+            using (var db = new LiteDatabase(liteDBPath))
+            {
+                var issueCollection = db.GetCollection<Video>("issues");
+                // Insert a new issue document  
+                issueCollection.Insert(issue);
+                //IndexIssue(issueCollection);
+            }            
+        }
+
+
+
+        private static void IndexIssue(Collection<Video> issueCollection)
+        {
+            //// Index on IssueId  
+            //issueCollection.EnsureIndex(x => x.IssueId);
+            //// Index on ErrorText  
+            //issueCollection.EnsureIndex(x => x.ErrorText);
+            //// Index on DateTime  
+            //issueCollection.EnsureIndex(x => x.DateTime);
+            //// Index on IssueType  
+            //issueCollection.EnsureIndex(x => x.IssueType);
+        }
+
+        public static void Update(Video issue)
+        {
+            // Open data file (or create if not exits)  
+            using (var db = new LiteDatabase(liteDBPath))
+            {
+                var issueCollection = db.GetCollection<Video>("issues");
+                // Update an existing issue document  
+                issueCollection.Update(issue);
+            }
+        }
+
+        public static void Delete(Guid issueId)
+        {
+            using (var db = new LiteDatabase(liteDBPath))
+            {
+                var issues = db.GetCollection<Video>("issues");
+                //issues.Delete(i => i.IssueId == issueId);
+            }
+        }
+
+        public static IList<Video> GetAll()
+        {
+            var issuesToReturn = new List<Video>();
+            using (var db = new LiteDatabase(liteDBPath))
+            {
+                var issues = db.GetCollection<Video>("issues");
+                //var results = issues.All();
+                var results = issues.FindAll();
+                foreach (Video issueItem in results)
+                {
+                    issuesToReturn.Add(issueItem);
+                }
+                return issuesToReturn;
+            }
         }
 
     }

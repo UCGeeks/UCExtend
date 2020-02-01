@@ -46,7 +46,12 @@ namespace UCExtend
 
         public void VideoPlayer_Load(object sender, EventArgs e)
         {
-            DataFactory.LoadData();
+            var data = DataFactory.LoadData();
+            foreach (var item in data)
+            {
+                DataFactory.Add(item);
+            }
+            
             comboBox1.DataSource = DataFactory.GetPlayList();
         }
 

@@ -68,6 +68,9 @@
     <ApplicationIcon>Images\app_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteDB, Version=5.0.0.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>packages\LiteDB.5.0.0\lib\net45\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Lync.Model, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Microsoft Office\Office15\LyncSDK\Assemblies\Desktop\Microsoft.Lync.Model.dll</HintPath>
@@ -75,6 +78,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -132,6 +136,7 @@
     </Compile>
     <Compile Include="VideoTraining\JsInteractionHandler.cs" />
     <Compile Include="VideoTraining\Video.cs" />
+    <Compile Include="VideoTraining\VideoOfferService.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
