@@ -135,6 +135,7 @@
       <DependentUpon>VideoPlayer.cs</DependentUpon>
     </Compile>
     <Compile Include="VideoTraining\JsInteractionHandler.cs" />
+    <Compile Include="VideoTraining\PreferredOfferHour.cs" />
     <Compile Include="VideoTraining\Video.cs" />
     <Compile Include="VideoTraining\VideoOfferService.cs" />
     <EmbeddedResource Include="AboutBox.resx">

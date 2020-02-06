@@ -38,12 +38,27 @@ namespace UCExtend
             ni.Visible = true;
             ni.ShowBalloonTip(timeToShow);
             //ni.BalloonTipIcon = ToolTipIcon.Error;
-	    }
+        }
 
-		/// <summary>
-		/// Displays the icon in the system tray.
-		/// </summary>
-		public void Display()
+        public void BalloonTip(string title, string message, int timeToShow, bool clickable)
+        {
+            ni.BalloonTipTitle = title;
+            ni.BalloonTipText = message;
+            ni.Visible = true;
+            ni.ShowBalloonTip(timeToShow);
+            ni.BalloonTipClicked += new EventHandler(notifyIcon_BalloonTipClicked);
+            //ni.BalloonTipIcon = ToolTipIcon.Error;
+        }
+
+        private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
+        {
+            new VideoPlayer(VideoId:"Z25ibgtwQa0").ShowDialog();
+        }
+
+        /// <summary>
+        /// Displays the icon in the system tray.
+        /// </summary>
+        public void Display()
 		{
             try
             {

@@ -174,8 +174,9 @@ namespace UCExtend
             //using (ProcessIcon pi = new ProcessIcon())
             using (ProcessIcon pi = new ProcessIcon())
             {
-                //Use to pass instance of ProcessIcon to LyncPresenceSwitcher
+                //Use to pass instance of ProcessIcon
                 lyncPresenceSwitcher.processIcon = pi;
+                videoOfferService.processIcon = pi;
 
                 //Pass Lync instance
                 pi.lync = lyncClientController;

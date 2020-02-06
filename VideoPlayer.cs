@@ -37,6 +37,14 @@ namespace UCExtend
         {
             InitializeComponent();
             InitBrowser();
+            //LoadHtml("Z25ibgtwQa0");
+        }
+
+        public VideoPlayer(string VideoId)
+        {
+            InitializeComponent();
+            InitBrowser();
+            LoadHtml(VideoId);
         }
 
         private void VideoPlayer_FormClosing(object sender, FormClosingEventArgs e)
