@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace UCExtend.VideoTraining
 {
@@ -19,11 +20,12 @@ namespace UCExtend.VideoTraining
         //Get instance of system idle timer
         SystemIdleTimer SystemIdleTimer1 = new SystemIdleTimer();
         int idleTime = 10;
+        Video nextVideoUp;
         public VideoOfferService()
         {
             //initialise and start timer
             TimerVideoOffer = new System.Timers.Timer();
-            TimerVideoOffer.Interval = 1000;//60000;
+            TimerVideoOffer.Interval = 10000;//60000;
             TimerVideoOffer.Elapsed += TimerVideoOffer_Elapsed;
             TimerVideoOffer.Start();
             
@@ -33,6 +35,8 @@ namespace UCExtend.VideoTraining
 
             SystemIdleTimer1.MaxIdleTime = Convert.ToUInt32(idleTime);
             SystemIdleTimer1.Start();
+
+            nextVideoUp = NextVideoUp();
 
         }
 
@@ -59,7 +63,7 @@ namespace UCExtend.VideoTraining
             if (activeHour)
             {
                 logging.WriteToLog("Active hour and system has come out of idle period of " + idleTime + " seconds. Triggering toast to user!");
-                processIcon.BalloonTip("TEST IDLE!!", "Come out of idle state of " + idleTime, balloonTipTime, true);
+                BalloonTip("TEST IDLE!!", "Come out of idle state of " + idleTime, balloonTipTime, true);
                 //Need to mark as triggered for that hour and day so hours might need to be their own class
             }
         }
@@ -68,7 +72,7 @@ namespace UCExtend.VideoTraining
         bool activeHour;
         List<PreferredOfferHour> hours = new List<PreferredOfferHour>();
         private void Offer()
-        {
+        {            
             //List<int> hours = preferedHours.Split(',').Select(int.Parse).ToList();           
             foreach (var hour in preferedHours.Split(',').Select(int.Parse).ToList())
             {
@@ -80,7 +84,7 @@ namespace UCExtend.VideoTraining
 
             var now = DateTime.Now;
             var nowHour = now.Hour;
-            var currentActiveHour = hours.First(h => h.Hour.Equals(nowHour));
+            var currentActiveHour = hours.FirstOrDefault(h => h.Hour.Equals(nowHour));
             //hours.Any(h => h.Hour.Equals(now))
             if (currentActiveHour != null)
             {
@@ -90,7 +94,7 @@ namespace UCExtend.VideoTraining
                 if (now.Minute >= 45 && !currentActiveHour.IsOfferedForHour)
                 {
                     //It's 45m past an active hour and no offer has been made, so now one is :)
-                    processIcon.BalloonTip("TEST!!", "Its 45 past the hour!", balloonTipTime);                    
+                    BalloonTip("TEST!!", "Its 45 past the hour!", balloonTipTime, false);                    
                 }
             }
             else
@@ -101,7 +105,55 @@ namespace UCExtend.VideoTraining
 
             
         }
+
+        public Video NextVideoUp()
+        {
+            var videos = DataFactory.GetVideos();
+            Video nextUp = videos.Where(w => w.IsWatched == false).OrderBy(o => o.OfferCount).FirstOrDefault();
+            return nextUp;
+        }
+
+        NotifyIcon ni = new NotifyIcon();
+        static string appIcon = Application.StartupPath + @"\Images\app_icon.ico";
+        public void BalloonTip(string title, string message, int timeToShow, bool clickable)
+        {
+            //ni.BalloonTipTitle = title;
+            //ni.BalloonTipText = message;
+            //ni.Visible = true;
+            //ni.ShowBalloonTip(timeToShow);
+            //ni.BalloonTipClicked += new EventHandler(notifyIcon_BalloonTipClicked);
+            //ni.BalloonTipIcon = ToolTipIcon.Error;
+
+            var notification = new System.Windows.Forms.NotifyIcon()
+            {
+                Visible = true,
+                Icon = System.Drawing.Icon.ExtractAssociatedIcon(appIcon), 
+                //optional - BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info,
+                BalloonTipTitle = title,
+                BalloonTipText = message
+            };
+
+            //Display for 5 seconds.
+            notification.ShowBalloonTip(timeToShow);
+            //Click event handler
+            notification.BalloonTipClicked += new EventHandler(notifyIcon_BalloonTipClicked);
+
+            // This will let the balloon close after it's 5 second timeout
+            // for demonstration purposes. Comment this out to see what happens
+            // when dispose is called while a balloon is still visible.
+            //Thread.Sleep(10000);
+
+            // The notification should be disposed when you don't need it anymore,
+            // but doing so will immediately close the balloon if it's visible.
+            notification.Dispose();
+        }
+
+        private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
+        {
+            new VideoPlayer(VideoId: nextVideoUp.VideoId).ShowDialog();
+        }
+
     }
 
-    
+
 }

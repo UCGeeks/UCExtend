@@ -54,7 +54,7 @@ namespace UCExtend
 
         public void VideoPlayer_Load(object sender, EventArgs e)
         {
-            var data = DataFactory.LoadData();
+            var data = DataFactory.GetVideos();
             foreach (var item in data)
             {
                 DataFactory.Add(item);

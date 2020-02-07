@@ -17,7 +17,7 @@ namespace UCExtend.VideoTraining
         public static string pathVideoPlayWatchList = settingsFolderBase + @"\VideoWatchList.txt";
         public static string liteDBPath = settingsFolderBase + @"\VideoPlayList.db";
 
-        public static List<Video> LoadData()
+        public static List<Video> GetVideos()
         {
             List<Video> videos = new List<Video>();
 
